@@ -18,17 +18,17 @@
 
     <div class id="estimate"></div>
 
-    <bottom>1</bottom>
+    <buttom>1</buttom>
 
-    <bottom>2</bottom>
+    <buttom>2</buttom>
 
-    <bottom>3</bottom>
+    <buttom>3</buttom>
 
-    <bottom>4</bottom>
+    <buttom>4</buttom>
 
-    <bottom>5</bottom>
+    <buttom>5</buttom>
 
-    <bottom>送信</bottom>
+    <buttom>送信</buttom>
 
     <h1>担当科目</h1>
 
@@ -37,6 +37,8 @@
     <input type="text" name="text">
 
     <div class id="comment"></div>
+
+    
 
     
 
