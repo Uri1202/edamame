@@ -1,4 +1,8 @@
-console.log("Hello")
-console.log("Hello muizu")
-console.log("hello nyan92015")
-console.log("hello eraser")
+function Get_Profile() {
+    return fetch(baseUrl + "/Data?collection=sns", {
+      method: "GET"
+    }).then((response) => {
+      return response.json();
+    });
+}
+
