@@ -12,88 +12,32 @@
 <body>
     <img scr="picture">
 
-    <div class id="name"></div>
+    <div id="name"></div>
 
-    <div class id="Star 1.svg"></div>
+    <div id="Star 1.svg"></div>
 
-    <div class id="estimate"></div>
+    <div id="estimate"></div>
 
-    <buttom>1</buttom>
+    <button>1</button>
 
-    <buttom>2</buttom>
+    <button>2</button>
 
-    <buttom>3</buttom>
+    <button>3</button>
 
-    <buttom>4</buttom>
+    <button>4</button>
 
-    <buttom>5</buttom>
+    <button>5</button>
 
-    <buttom>送信</buttom>
+    <button>送信</button>
 
     <h1>担当科目</h1>
 
-    <div class id="subject"></div>
+    <div id="subject"></div>
 
     <input type="text" name="text">
 
-    <div class id="comment"></div>
-
-    
-
-    
-
-
-    
-
-
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <div id="comment"></div>
 
 </body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </html>
