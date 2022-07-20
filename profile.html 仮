@@ -12,11 +12,11 @@
 <body>
     <img scr="picture">
 
-    <div class id="name"></div>
+    <div id="name"></div>
 
-    <div class id="Star 1.svg"></div>
+    <div id="Star 1.svg"></div>
 
-    <div class id="estimate"></div>
+    <div id="estimate"></div>
 
     <button>1</button>
 
@@ -32,68 +32,12 @@
 
     <h1>担当科目</h1>
 
-    <div class id="subject"></div>
+    <div id="subject"></div>
 
     <input type="text" name="text">
 
-    <div class id="comment"></div>
-
-
-
-    
-
-
-    
-
-
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <div id="comment"></div>
 
 </body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </html>
