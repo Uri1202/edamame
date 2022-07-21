@@ -4,8 +4,8 @@ const baseUrl = "https://us-central1-aizuhack-353413.cloudfunctions.net";
 
 function CreateIcon(userData) {
 
-  const IconItem = document.createElement("a");
-  IconItem.href = "profile.html?id=" + userData.user.id;
+  const IconData = document.createElement("a");
+  IconData.href = "profile.html?id=" + userData.user.id;
 
   const userImg = document.createElement("img");
   userImg.classname = "userImg";
@@ -16,11 +16,11 @@ function CreateIcon(userData) {
   userName.textContent = userData.user.displayName;
 
   const userAssess = document.createElement("div");
-  userAssess.classname = "userEval";
+  userAssess.classname = "userAssess";
   userAssess.textContent = userData.user.assessment;
 
-  IconItem.append(userImg, userName,userAssess);
-  return IconItem;
+  IconData.append(userImg, userName,userAssess);
+  return IconData;
 
 }
 
@@ -54,12 +54,12 @@ function Get_Profile() {
 
 }
 
-const Icon_list = document.getElementsByClassName("main-content")[0];
+const IconList = document.getElementsByClassName("main-content")[0];
 
-Get_Profile().then((Icons_data) => {
+Get_Profile().then((IconsData) => {
 
-  for (let i = 0; i < Icons_data.length; i = i + 1) {
-    profile.append(CreateIcon(Icons_data[i]));
+  for (let i = 0; i < IconsData.length; i = i + 1) {
+    IconList.append(CreateIcon(IconsData[i]));
   }
 
 });
