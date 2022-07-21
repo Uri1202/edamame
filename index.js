@@ -2,20 +2,24 @@
 const baseUrl = "https://us-central1-aizuhack-353413.cloudfunctions.net";
 
 
-function CreateIcon(Icon_data) {
+function CreateIcon(userData) {
 
   const IconItem = document.createElement("a");
-  IconItem.href = "profile.html?id=" + Icon_data.user.id;
+  IconItem.href = "profile.html?id=" + userData.user.id;
 
-  const userIcon = document.createElement("img");
-  userIcon.classname = "IconItem_userIcon";
-  userIcon.src = Icon_data.user.iconUrl;
+  const userImg = document.createElement("img");
+  userImg.classname = "userImg";
+  userImg.src = userData.user.iconUrl;
 
   const userName = document.createElement("p");
-  userName.classname = "IconItem_content";
-  userName.textContent = Icon_data.user.displayName;
+  userName.classname = "userName";
+  userName.textContent = userData.user.displayName;
 
-  IconItem.append(userIcon, userName);
+  const userAssess = document.createElement("div");
+  userAssess.classname = "userEval";
+  userAssess.textContent = userData.user.assessment;
+
+  IconItem.append(userImg, userName,userAssess);
   return IconItem;
 
 }
