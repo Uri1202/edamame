@@ -9,7 +9,7 @@ function CreateIcon(profileData) {
   iconImg.classname = "iconImg";
   iconImg.src = profileData.icon_data.imageUrl;
 
-  const iconName = document.createElement("p");
+  const iconName = document.createElement("div");
   iconName.classname = "profileName";
   iconName.textContent = profileData.icon_data.name;
 
@@ -68,8 +68,8 @@ function Get_Profile() {
 
 const IconList = document.getElementsByClassName("main-content")[0];
 
-Get_Profile().then((iconsData) => {
-  for (let i = 0; i < iconsData.length; i = i + 1) {
-    IconList.append(CreateIcon(iconsData[i]));
+Get_Profile().then((profileData) => {
+  for (let i = 0; i < profileData.length; i = i + 1) {
+    IconList.append(CreateIcon(profileData[i]));
   }
 });
