@@ -1,23 +1,92 @@
+
 .header {
-    width: 100%;
-    height: 60px;
-    background: #d5d1cf;
-    color: #51585b;
+    
+    position: absolute;
+    width: 1440px;
+    height: 110px;
+    left: 0px;
+    top: 1px;
+    display: flex;
+
+    background: #C4C4C4;
+    
 }
+
+ .logo{
+    margin: 4px;
+    width:100px;
+    height:100px;
+    border-radius:50%;
+  }
+
+.title{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 48px;
+    display: flex;
+    align-items: center;
+
+    color: #000000;
+}
+
+
 
 .main-content{
     display: flex;
-    gap: 12px;
-    height: 200px;
+    gap: 30px;
+    height: 10px;
     background: #51585b;
-    padding: 40px 20px 80px 20px;
+    padding: 10px 30px 50px 20px;
     color: #d5d1cf;
+    margin: 100px 160px 10px;
+
 }
 
+.name{
+    font-size: 20px;
+}
+.icon{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+}
+
+
+
 .star5_rating{
-    position: relative;
+    position: absolute;
     z-index: 0;
     display: inline-block;
     white-space: nowrap;
-    color: #CCCCCC;
+    color: #CCCCCC; /* グレーカラー 自由に設定化 */
+    /*font-size: 30px; フォントサイズ 自由に設定化 */
 }
+
+.star5_rating:before, .star5_rating:after{
+    content: '★★★★★';
+    font-size: 30px;
+}
+
+.star5_rating:after{
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #ffcf32; /* イエローカラー 自由に設定化 */
+}
+
+.star5_rating[data-rate="5"]:after{ width: 100%; } /* 星5 */
+.star5_rating[data-rate="4.5"]:after{ width: 90%; } /* 星4.5 */
+.star5_rating[data-rate="4"]:after{ width: 80%; } /* 星4 */
+.star5_rating[data-rate="3.5"]:after{ width: 70%; } /* 星3.5 */
+.star5_rating[data-rate="3"]:after{ width: 60%; } /* 星3 */
+.star5_rating[data-rate="2.5"]:after{ width: 50%; } /* 星2.5 */
+.star5_rating[data-rate="2"]:after{ width: 40%; } /* 星2 */
+.star5_rating[data-rate="1.5"]:after{ width: 30%; } /* 星1.5 */
+.star5_rating[data-rate="1"]:after{ width: 20%; } /* 星1 */
+.star5_rating[data-rate="0.5"]:after{ width: 10%; } /* 星0.5 */
+.star5_rating[data-rate="0"]:after{ width: 0%; } /* 星0 */
