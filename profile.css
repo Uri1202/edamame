@@ -127,7 +127,7 @@ order: 12;
 flex-grow: 0;
 
 }
-
+/*これより下はひとまずOK*/
 /*大まかな右側のcss*/
 
 #right {
@@ -141,7 +141,7 @@ gap: 80px;
 
 position: absolute;
 width: 767px;
-height: 100vh;
+height: 100vh; /*デスクトップに対する大きさの比*/
 left: 666px;
 top: 0px;
 overflow-y: scroll;
