@@ -41,7 +41,21 @@ background: #FFFFFF;
 }
 
 /*写真と名前の空白は？*/
+.blank {
+  /* Rectangle 11 */
 
+
+width: 347px;
+height: 36px;
+
+background: #FFFFFF;
+
+/* Inside auto layout */
+
+flex: none;
+order: 1;
+flex-grow: 0;
+}
 
 #name {
   /* 名前 */
