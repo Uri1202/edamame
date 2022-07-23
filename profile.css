@@ -8,7 +8,29 @@ body {
   color: #383e45;
   font-size: 0.9rem;
 }
+/*大まかな左側のcss*/
+#left {
+  /* infomation */
 
+
+/* Auto layout */
+
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 50px 37px;
+
+position: absolute;
+width: 666px;
+height: 761.07px;
+left: 0px;
+top: 0px;
+
+background: #FFFFFF;
+}
+
+
+/*写真部分のcss*/
 #picture {
   width: 360px;
   height: 360px;
@@ -18,10 +40,155 @@ body {
   flex-grow: 0;
 }
 
+/*写真と名前の空白は？
+
+
 #name {
-  
+  width: 
+
+
+
+}
+
+/*名前と星の間の空白？*/
+:blank
+
+
+
+#Star {
+  /* Auto layout */
+
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px 16px;
+gap: 24px;
+
+width: 174px;
+height: 60px;
+
+background: #FFFFFF;
+
+/* Inside auto layout */
+
+flex: none;
+order: 6;
+flex-grow: 0;
 
 }
 
 
 
+#button {
+  /* touhyou */
+
+
+/* Auto layout */
+
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+width: 537px;
+height: 39px;
+
+background: #FFFFFF;
+
+/* Inside auto layout */
+
+flex: none;
+order: 8;
+flex-grow: 0;
+
+
+
+
+
+}
+
+#subject {
+  /* Line 2 */
+
+
+width: 470px;
+height: 0px;
+
+border: 1px solid #000000;
+transform: rotate(-0.25deg);
+
+/* Inside auto layout */
+
+flex: none;
+order: 12;
+flex-grow: 0;
+
+}
+
+/*大まかな右側のcss*/
+
+#right {
+  /* Auto layout */
+
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 54px 67px;
+gap: 80px;
+
+position: absolute;
+width: 767px;
+height: 1131px;
+left: 666px;
+top: 0px;
+
+/* gray */
+
+background: #EDEDED;
+}
+
+
+
+#text {
+  /* Rectangle 3 */
+
+
+box-sizing: border-box;
+
+width: 633px;
+height: 63px;
+
+background: #D9D9D9;
+border: 1px solid #000000;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+/* Inside auto layout */
+
+flex: none;
+order: 0;
+flex-grow: 0;
+}
+
+#comment {
+  /* Rectangle 16 */
+
+
+box-sizing: border-box;
+
+width: 633px;
+height: 160px;
+
+background: #D9D9D9;
+border: 1px solid #000000;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+/* Inside auto layout */
+
+flex: none;
+order: 0;
+flex-grow: 0;
+
+}
