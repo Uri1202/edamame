@@ -141,7 +141,7 @@ gap: 80px;
 
 position: absolute;
 width: 767px;
-height: 1131px;
+height: 100vh;
 left: 666px;
 top: 0px;
 overflow-y: scroll;
@@ -173,7 +173,7 @@ order: 0;
 flex-grow: 0;
 }
 
-#comment {
+.comment {
   /* Rectangle 16 */
 
 
