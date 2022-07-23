@@ -6,7 +6,7 @@ html {
 
 body {
   color: #383e45;
-  font-size: 0.9rem;
+  
 }
 /*大まかな左側のcss*/
 #left {
@@ -40,11 +40,34 @@ background: #FFFFFF;
   flex-grow: 0;
 }
 
-/*写真と名前の空白は？
+/*写真と名前の空白は？*/
 
 
 #name {
-  width: 
+  /* 名前 */
+
+
+
+height: 39px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 32px;
+line-height: 39px;
+/* identical to box height */
+
+
+color: #000000;
+
+
+/* Inside auto layout */
+
+flex: none;
+order: 2;
+flex-grow: 0;   
+
+  
 
 
 
