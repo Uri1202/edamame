@@ -1,32 +1,33 @@
 const baseUrl = "https://us-central1-aizuhack-353413.cloudfunctions.net";
 
 function CreateIcon(profileData) {
-
   const iconData = document.createElement("a");
   iconData.href = "profile.html?id=" + profileData.id;
 
-  //名前、画像のタグ作り
+  //名前、画像,星評価のタグ作り
   const iconImg = document.createElement("img");
   iconImg.classname = "iconImg";
   iconImg.src = profileData.imageUrl;
 
   const iconName = document.createElement("div");
-  iconName.classname = "profileName";
+  iconName.classname = "iconName";
   iconName.textContent = profileData.name;
 
-  //rateの四捨五入
-  const star = document.getElementsByClassName("star5_rating")[0];
-  const roundRate = Math.round(profileData.rateAverage*2)/2;
-  star.dataset.rate= roundRate;
+  const iconStar = document.createElement("span");
+  const roundRate = Math.round(profileData.rateAverage * 2) / 2;
+  iconStar.classname = "star5_rating";
+  iconStar.dataset.rate = roundRate;
 
+  iconData.append(iconImg, iconName, iconStar);
+  return iconData;
 }
-
 
 //テスト用のpost　↓
 
+/*
 function Post() {
   const profile_data = {
-    name: "nyan92015",
+    name: "にゃん",
     imageUrl: "https://twitter.com/nyan84392441/photo",
     rateAverage: 2.3,
     ratedCount: 1,
@@ -38,8 +39,9 @@ function Post() {
     body: JSON.stringify(profile_data)
   });
 }
+*/
 
-Post();
+//Post();
 
 function Get_Profile() {
   return fetch(baseUrl + "/Data?collection=teacher", {
@@ -49,10 +51,23 @@ function Get_Profile() {
   });
 }
 
-const IconList = document.getElementsByClassName("main-content")[0];
+const iconList = document.getElementsByClassName("main-content")[0];
 
 Get_Profile().then((profileData) => {
+  const iconSortList = [];
   for (let i = 0; i < profileData.length; i = i + 1) {
-    IconList.append(CreateIcon(profileData[i]));
+    iconSortList.push(profileData[i]);
+  }
+  //並び替え
+  iconSortList.sort(function (a, b) {
+    if (a.name > b.name) {
+      return 1;
+    } else {
+      return -1;
+    }
+  });
+  for (let i = 0; i < iconSortList.length; i = i + 1) {
+    iconList.append(CreateIcon(iconSortList[i]));
+    console.log("append ", iconSortList[i]);
   }
 });
