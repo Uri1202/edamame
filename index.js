@@ -1,10 +1,11 @@
 const baseUrl = "https://us-central1-aizuhack-353413.cloudfunctions.net";
 
 function CreateIcon(profileData) {
+
   const iconData = document.createElement("a");
   iconData.href = "profile.html?id=" + profileData.id;
 
-  //名前、画像、星評価のタグ作り
+  //名前、画像のタグ作り
   const iconImg = document.createElement("img");
   iconImg.classname = "iconImg";
   iconImg.src = profileData.icon_data.imageUrl;
@@ -13,29 +14,13 @@ function CreateIcon(profileData) {
   iconName.classname = "profileName";
   iconName.textContent = profileData.icon_data.name;
 
-  const iconRate = document.createElement("div");
-  iconRate.classname = "profileRate";
+  //rateの四捨五入
+  const star = document.getElementsByClassName("star5_rating")[0];
+  const roundRate = Math.round(profileData.icon_data.rateAverage*2)/2;
+  star.data-rate = roundRate;
 
-  //星のタグ作り
-  const stars = {};
-
-  for (let i = 1; i <= 5; i++) {
-
-    const star = document.createElement("div");
-    stars["star" + String(i)] = star;
-
-    if (i <= Math.round(profileData.icon_data.rateAverage)) {
-      stars["star" + String(i)].classname = "yellow";
-    } else {
-      stars["star" + String(i)].classname = "grey";
-    }
-
-    iconRate.append(stars["star" + String(i)]);
-  }
-
-  iconData.append(iconImg, iconName, iconRate);
-  return iconData;
 }
+
 
 //テスト用のpost　↓
 
@@ -47,8 +32,8 @@ function Post() {
       rateAverage: 2.3
     },
     ratedCount: 1,
-    subjects: "数学",
-    comments: "おはよう"
+    subjects: ["数学"],
+    comments: ["おはよう"]
   };
   fetch(baseUrl + "/Data?collection=teacher?", {
     method: "POST",
