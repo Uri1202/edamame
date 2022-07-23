@@ -8,16 +8,16 @@ function CreateIcon(profileData) {
   //名前、画像のタグ作り
   const iconImg = document.createElement("img");
   iconImg.classname = "iconImg";
-  iconImg.src = profileData.icon_data.imageUrl;
+  iconImg.src = profileData.imageUrl;
 
   const iconName = document.createElement("div");
   iconName.classname = "profileName";
-  iconName.textContent = profileData.icon_data.name;
+  iconName.textContent = profileData.name;
 
   //rateの四捨五入
   const star = document.getElementsByClassName("star5_rating")[0];
-  const roundRate = Math.round(profileData.icon_data.rateAverage*2)/2;
-  star.data-rate = roundRate;
+  const roundRate = Math.round(profileData.rateAverage*2)/2;
+  star.dataset.rate= roundRate;
 
 }
 
@@ -26,11 +26,9 @@ function CreateIcon(profileData) {
 
 function Post() {
   const profile_data = {
-    icon_data: {
-      name: "nyan92015",
-      imageUrl: "https://twitter.com/nyan84392441/photo",
-      rateAverage: 2.3
-    },
+    name: "nyan92015",
+    imageUrl: "https://twitter.com/nyan84392441/photo",
+    rateAverage: 2.3,
     ratedCount: 1,
     subjects: ["数学"],
     comments: ["おはよう"]
