@@ -1,4 +1,5 @@
 
+
 .header {
     
     position: absolute;
@@ -7,8 +8,8 @@
     left: 0px;
     top: 1px;
     display: flex;
-
-    background: #C4C4C4;
+    background-color:#d5d1cf;
+    
     
 }
 
@@ -44,10 +45,10 @@
 
 }
 
-.name{
+.iconName{
     font-size: 20px;
 }
-.icon{
+.iconImg{
     width:50px;
     height:50px;
     border-radius:50%;
