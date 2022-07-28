@@ -8,10 +8,25 @@
     left: 0px;
     top: 1px;
     display: flex;
-    background-color:#d5d1cf;
-    
+    background-color: #d5d1cf;
     
 }
+
+
+
+.left{
+    float: left;
+    display: flex;
+    flex-flow: column;
+    margin: 40px;
+    background-color: aqua;
+    
+}
+
+.button{
+    display: flex;
+}
+
 
  .logo{
     margin: 4px;
@@ -36,6 +51,7 @@
 .main{
     margin: 120px;
     text-align: center 
+    
     
     
 }
