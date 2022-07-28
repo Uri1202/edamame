@@ -11,6 +11,7 @@ from unicodedata import name
 
 
 class Enemy():
+    
 
     name =""
     hp   =0
