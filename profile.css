@@ -29,6 +29,11 @@ top: 0px;
 background: #FFFFFF;
 }
 
+.iconImg{
+  width:460px;
+  height:460px;
+  border-radius:50%;
+}
 
 /*写真部分のcss*/
 #picture {
@@ -230,3 +235,31 @@ order: 0;
 flex-grow: 0;
 
 }
+
+star5_rating:before, .star5_rating:after{
+  content: '★★★★★';
+  font-size: 30px;
+}
+
+.star5_rating:after{
+  position: relative;
+  left: -5em;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #ffcf32; /* イエローカラー 自由に設定化 */
+}
+
+.star5_rating[data-rate="5"]:after{ width: 100%; } /* 星5 */
+.star5_rating[data-rate="4.5"]:after{ width: 90%; } /* 星4.5 */
+.star5_rating[data-rate="4"]:after{ width: 80%; } /* 星4 */
+.star5_rating[data-rate="3.5"]:after{ width: 70%; } /* 星3.5 */
+.star5_rating[data-rate="3"]:after{ width: 60%; } /* 星3 */
+.star5_rating[data-rate="2.5"]:after{ width: 50%; } /* 星2.5 */
+.star5_rating[data-rate="2"]:after{ width: 40%; } /* 星2 */
+.star5_rating[data-rate="1.5"]:after{ width: 30%; } /* 星1.5 */
+.star5_rating[data-rate="1"]:after{ width: 20%; } /* 星1 */
+.star5_rating[data-rate="0.5"]:after{ width: 10%; } /* 星0.5 */
+.star5_rating[data-rate="0"]:after{ width: 0%; } /* 星0 */
