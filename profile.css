@@ -236,7 +236,7 @@ flex-grow: 0;
 
 }
 
-star5_rating:before, .star5_rating:after{
+.star5_rating:before, .star5_rating:after{
   content: '★★★★★';
   font-size: 30px;
 }
