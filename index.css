@@ -25,14 +25,17 @@
     flex-flow: column;
     background-color: #d9d9d9;
     color: black;
-    padding: 30px 50px 100px 40px;
+    padding: 30px 50px 100px 50px;
     gap: 1px;
+    text-align: center;
+
     
 }
 
 .button{    
     display: flex;
-    width: 30px;
+    flex-flow: column;
+    width: 100px;
     gap: 2px;
     
 }
