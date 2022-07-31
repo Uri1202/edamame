@@ -3,7 +3,7 @@ const baseUrl = "https://us-central1-aizuhack-353413.cloudfunctions.net";
 function CreateIcon(profileData) {
   const iconData = document.createElement("a");
   iconData.href = "profile.html?id=" + profileData.id;
-  iconData.className = "icon";
+  iconData.className = "teacher";
   //名前、画像,星評価のタグ作り
   const iconImg = document.createElement("img");
   iconImg.className = "iconImg";
