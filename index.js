@@ -54,6 +54,8 @@ function Get_Profile() {
 
 const iconList = document.getElementsByClassName("main-content")[0];
 const iconSortList = [];
+const subjectList = ["数学", "英語", "物理", "プログラミング"];
+
 Get_Profile().then((profileData) => {
   for (let i = 0; i < profileData.length; i = i + 1) {
     if (profileData[i].name !== "ERASER") {
@@ -62,6 +64,7 @@ Get_Profile().then((profileData) => {
   }
 
   //日本語並び替え(デフォルト)
+  
   iconSortList.sort(function (a, b) {
     if (a.name.hiragana > b.name.hiragana) {
       return 1;
@@ -76,11 +79,12 @@ Get_Profile().then((profileData) => {
 });
 
 //タグの削除と順番を変えたタグを投げる
+
 function Refresh(mode) {
   while (iconList.lastChild) {
     iconList.removeChild(iconList.lastChild);
   }
-  if (mode === "change") {
+  if (mode !== "delete") {
     for (let i = 0; i < iconSortList.length; i = i + 1) {
       iconList.append(CreateIcon(iconSortList[i]));
     }
@@ -96,7 +100,7 @@ function Sort_japanese() {
       return -1;
     }
   });
-  Refresh("change");
+  Refresh();
 }
 
 //英語並び替え
@@ -109,15 +113,12 @@ function Sort_english() {
       return -1;
     }
   });
-  Refresh("change");
+  Refresh();
 }
 
 //教科並び替え
 function Sort_subject() {
   Refresh("delete");
-
-  const subjectList = ["数学", "英語", "物理", "プログラミング"];
-
   for (let sub of subjectList) {
     const subIconList = document.createElement("div");
     subIconList.className = sub;
@@ -132,10 +133,78 @@ function Sort_subject() {
   }
 }
 
-const btn1 = document.getElementsByClassName("sortJapanese")[0];
-const btn2 = document.getElementsByClassName("sortEnglish")[0];
-const btn3 = document.getElementsByClassName("sortSubject")[0];
+const btn1 = document.getElementsByClassName("Japanese")[0];
+const btn2 = document.getElementsByClassName("English")[0];
+const btn3 = document.getElementsByClassName("Subject")[0];
 
 btn1.addEventListener("click", Sort_japanese, false);
 btn2.addEventListener("click", Sort_english, false);
 btn3.addEventListener("click", Sort_subject, false);
+
+//検索
+
+//名前検索
+function Search_name(textContent) {
+  const pickIconList = [];
+  for (let iconData of iconSortList) {
+    //ひらがな
+    if (iconData.name.hiragana.includes(textContent)) {
+      pickIconList.push(CreateIcon(iconData));
+    }
+    //漢字
+    else if (iconData.name.kanji.includes(textContent)) {
+      pickIconList.push(CreateIcon(iconData));
+    }
+    //英語
+    else if (iconData.name.english.includes(textContent)) {
+      pickIconList.push(CreateIcon(iconData));
+    }
+  }
+  if (pickIconList.length !== 0) {
+    return pickIconList;
+  } 
+  else {
+    return 0;
+  }
+}
+
+//教科検索
+function Search_subject(textContent) {
+  if (subjectList.indexOf(textContent) !== -1) {
+
+    const pickIconList = document.createElement("div");
+    pickIconList.className = textContent;
+    pickIconList.textContent = textContent;
+
+    for (let i = 0; i < iconSortList.length; i = i + 1) {
+      if (iconSortList[i].subjects.includes(textContent)) {
+        pickIconList.append(CreateIcon(iconSortList[i]));
+      }
+    }
+    return pickIconList;
+  } 
+  else {
+    return 0;
+  }
+}
+
+function Search() {
+  Refresh("delete");
+
+  const textContent = document.getElementsByClassName("textbox")[0];
+  const pickIconList1 = Search_name(textContent.value);
+  const pickIconList2 = Search_subject(textContent.value);
+
+  if (pickIconList1 === 0 && pickIconList2 === 0) {
+    iconList.textContent = "先生が見つかりません！";
+  } else if (pickIconList1 !== 0) {
+    for (let icon of pickIconList1) {
+      iconList.append(icon);
+    }
+  } else if (pickIconList2 !== 0) {
+    iconList.append(pickIconList2);
+  }
+}
+
+const btn4 = document.getElementsByClassName("search")[0];
+btn4.addEventListener("click", Search, false);
