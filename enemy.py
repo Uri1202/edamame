@@ -11,19 +11,14 @@ from unicodedata import name
 
 
 class Enemy():
+
+
     
 
-    name =""
-    hp   =0
-    at   =0
-    mp   =0
-    de   =0
-    sp   =0
-    attar =""
 
 
 
-    def __init__(self,name,hp,at,mp,de,sp,attr):  
+ def __init__(self,name,hp,at,mp,de,sp,attr):  
         
 
     self.name = name
@@ -37,36 +32,42 @@ class Enemy():
 class Enemy1(Enemy):
     def __init__(self,name,hp,at,mp,de,sp,attr):
         super().__init__(name,hp,at,mp,de,sp,attr)
-        Slime =("Slime",1000,500,10,100,50,"mizu")
+        
 
 
 class Enemy2(Enemy):
     def __init__(self,name,hp,at,mp,de,sp,attr):
         super().__init__(name,hp,at,mp,de,sp,attr)
-        Goblins =("Goblins",1000,500,10,100,50,"hono")
+        
 
 
 
 class Enemy3(Enemy):
     def __init__(self,name,hp,at,mp,de,sp,attr):
         super().__init__(name,hp,at,mp,de,sp,attr)
-        Golem =("Golem",1000,500,10,100,50,"kusa")       
+        
+
+
+
+
+
+Slime =Enemy1("Slime",1000,500,10,100,50,"mizu")
+Goblins =Enemy2("Goblins",1000,500,10,100,50,"hono")
+Golem =  Enemy3("Golem",1000,500,10,100,50,"kusa")   
+
+
+
+
 
 
 class Boss():
 
-    name   =""
-    hp     =0
-    at     =0
-    mp     =0
-    de     =0
-    sp     =0
-    attar  =""
-    sk     =""         #sk=special skill
+         #sk=special skill
 
 
 
-    def __init__(self,name,hp,at,mp,de,sp,attr,sk):  
+
+ def __init__(self,name,hp,at,mp,de,sp,attr,sk):  
         
 
     self.name = name
@@ -83,19 +84,19 @@ class Boss():
 class Boss1(Boss):
     def __init__(self,name,hp,at,mp,de,sp,attr,sk):
         super().__init__(name,hp,at,mp,de,sp,attr,sk)
-        Poseidon =("Poseidon",2000,1000,20,300,150,"mizu","津波")
+
 
 
 class Boss2(Boss):
     def __init__(self,name,hp,at,mp,de,sp,attr,sk):
         super().__init__(name,hp,at,mp,de,sp,attr,sk)
-        Dragon =("Dragon",2000,1000,20,300,150,"hono","竜の息吹き")
+        
 
 
 class Boss3(Boss):
     def __init__(self,name,hp,at,mp,de,sp,attr,sk):
         super().__init__(name,hp,at,mp,de,sp,attr,sk)
-        Mao =("Mao",3000,1000,20,300,150,"kusa","Fにしますよ")    #ラスボス
+        
 
 
         
@@ -103,6 +104,11 @@ class Boss3(Boss):
 
 
    
+
+Poseidon =Boss1("Poseidon",2000,1000,20,300,150,"mizu","津波")
+Dragon =Boss2("Dragon",2000,1000,20,300,150,"hono","竜の息吹き")
+Mao =Boss3("Mao",3000,1000,20,300,150,"kusa","Fにしますよ")    #ラスボス
+
 
 
         
