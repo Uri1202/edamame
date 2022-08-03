@@ -22,19 +22,18 @@ function add_star(){
     submitCount++;
     if(star_count>=1 && star_count<=5)allStar+=star_count;
     else submitCount--;
-    let matome = parseFloat((allStar/submitCount).toFixed(2));
-    console.log(matome);
+    let starCountSum = parseFloat((allStar/submitCount).toFixed(2));
     const $star = document.getElementById("star");
-    if(matome<0)       $star.textContent = "★";
-    else if(matome<3)  $star.textContent = "★★";
-    else if(matome<4)  $star.textContent = "★★★";
-    else if(matome<5)  $star.textContent = "★★★★";
-    else if(matome==5) $star.textContent = "★★★★★";
+    if(starCountSum<0)       $star.textContent = "★";
+    else if(starCountSum<3)  $star.textContent = "★★";
+    else if(starCountSum<4)  $star.textContent = "★★★";
+    else if(starCountSum<5)  $star.textContent = "★★★★";
+    else if(starCountSum==5) $star.textContent = "★★★★★";
     
 }
 
-const $submit_star = document.getElementById('sunmit_star');
-submit_star.addEventListener("click", add_star);
+const $submit_star = document.getElementById('submit_star');
+$submit_star.addEventListener("click", add_star);
 
 
 function addDetail(text) {
@@ -46,8 +45,8 @@ function addDetail(text) {
 }
   
 function add() {
-    const todo = document.getElementById("todo");
-    todo.append(addDetail(text.value));
+    const commentList = document.getElementById("commentList");
+    commentList.append(addDetail(text.value));
     text.value = ""; //入力後、検索欄から文字を消す
 }
 
