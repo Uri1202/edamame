@@ -228,9 +228,6 @@ body {
   order: 0;
   flex-grow: 0;
 
-<<<<<<< HEAD
-}
-=======
 }
 
 .star5_rating{
@@ -269,4 +266,3 @@ body {
 .star5_rating[data-rate="1"]:after{ width: 20%; } /* 星1 */
 .star5_rating[data-rate="0.5"]:after{ width: 10%; } /* 星0.5 */
 .star5_rating[data-rate="0"]:after{ width: 0%; } /* 星0 */
->>>>>>> 8d696ade9cc2b8803107b0358b57fbab5ef0ba97
