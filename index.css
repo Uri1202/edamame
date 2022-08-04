@@ -28,20 +28,9 @@
 }
 
 
-
-.button{
-    color: black;
-    padding: 3px 5px 3px 1px;
-    gap: 1px;
-    margin-top: 6px ;
-    display: flex;
-    flex-flow: column;
-    width: 180px;
-    gap: 2px;
-    
-    
+.Japanese{
+    display: none;
 }
-
 
  .logo{
     margin: 4px;
