@@ -18,25 +18,39 @@ for(let i=0;i<button_length;i++){
     });
 }
 
+function sendStarCountSum(){
+    return fetch(baseUrl, {method: "GET"})
+    .then((res)=>{
+        return(res.json());
+    })
+    .then((body)=>{
+        body.find((id,rateAverage) => {
+            if(id=myId) return rateAverage;
+        })
+    })
+}
+
 function sendSubmitCount(){
     return fetch(baseUrl, {method: "GET"})
     .then((res)=>{
         return(res.json());
     })
     .then((body)=>{
-        body.find((id) => {
-            console.log(id=myId)
+        body.find((id,ratedCount) => {
+            if(id=myId) return ratedCount;
         })
     })
 }
+
 let submitCount = sendSubmitCount();
+let starCountSum = sendStarCountSum();
 
 let allStar = 0;
 function add_star(){
     submitCount++;
     if(star_count>=1 && star_count<=5)allStar+=star_count;
     else submitCount--;
-    let starCountSum = parseFloat((allStar/submitCount).toFixed(2));
+    starCountSum = parseFloat((allStar/submitCount).toFixed(2));
     // const $star = document.getElementById("star");
     const el = document.querySelector('#star');
     if(starCountSum==5)       el.dataset.rate= "5";
