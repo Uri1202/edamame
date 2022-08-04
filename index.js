@@ -26,14 +26,14 @@ function CreateIcon(profileData) {
 function Post() {
   const profile_data = {
     name: {
-      hiragana: "にゃんb",
-      kanji: "煮ゃん",
-      english: "b"
+      hiragana: "いれーさーせんぱい",
+      kanji: "慰霊祭",
+      english: "ERASER"
     },
     imageUrl: "https://twitter.com/nyan84392441/photo",
-    rateAverage: 4.32,
+    rateAverage: 4.7,
     ratedCount: 1,
-    subjects: ["数学", "物理"],
+    subjects: ["プログラミング"],
     comments: ["おはよう"]
   };
   fetch(baseUrl + "/Data?collection=teacher", {
@@ -64,7 +64,6 @@ Get_Profile().then((profileData) => {
   }
 
   //日本語並び替え(デフォルト)
-  
   iconSortList.sort(function (a, b) {
     if (a.name.hiragana > b.name.hiragana) {
       return 1;
@@ -79,7 +78,6 @@ Get_Profile().then((profileData) => {
 });
 
 //タグの削除と順番を変えたタグを投げる
-
 function Refresh(mode) {
   while (iconList.lastChild) {
     iconList.removeChild(iconList.lastChild);
@@ -133,13 +131,12 @@ function Sort_subject() {
   }
 }
 
-const btn1 = document.getElementsByClassName("Japanese")[0];
-const btn2 = document.getElementsByClassName("English")[0];
-const btn3 = document.getElementsByClassName("Subject")[0];
-
-btn1.addEventListener("click", Sort_japanese, false);
-btn2.addEventListener("click", Sort_english, false);
-btn3.addEventListener("click", Sort_subject, false);
+const radioBtn1 = document.getElementsByName("sort")[0];
+const radioBtn2 = document.getElementsByName("sort")[1];
+const radioBtn3 = document.getElementsByName("sort")[2];
+radioBtn1.addEventListener("click", Sort_japanese, false);
+radioBtn2.addEventListener("click", Sort_english, false);
+radioBtn3.addEventListener("click", Sort_subject, false);
 
 //検索
 
@@ -162,8 +159,7 @@ function Search_name(textContent) {
   }
   if (pickIconList.length !== 0) {
     return pickIconList;
-  } 
-  else {
+  } else {
     return 0;
   }
 }
@@ -171,7 +167,6 @@ function Search_name(textContent) {
 //教科検索
 function Search_subject(textContent) {
   if (subjectList.indexOf(textContent) !== -1) {
-
     const pickIconList = document.createElement("div");
     pickIconList.className = textContent;
     pickIconList.textContent = textContent;
@@ -182,8 +177,7 @@ function Search_subject(textContent) {
       }
     }
     return pickIconList;
-  } 
-  else {
+  } else {
     return 0;
   }
 }
@@ -208,5 +202,3 @@ function Search() {
 
 const btn4 = document.getElementsByClassName("search")[0];
 btn4.addEventListener("click", Search, false);
-
-
