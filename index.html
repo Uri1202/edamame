@@ -5,8 +5,14 @@
     <title>
       食べログ先生
     </title>
-    <link href="https://fonts.googleapis.com/earlyaccess/nikukyu.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/earlyaccess/hannari.css" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/earlyaccess/nikukyu.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/earlyaccess/hannari.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
@@ -16,22 +22,18 @@
         src="https://cdn.discordapp.com/attachments/992426402194391121/1003583003995418684/logo.png"
         alt="rogo"
       />
-      <div class="title">
-        たべログ先生</div>
-      
+      <div class="title">たべログ先生</div>
       <input type="text" class="textbox" placeholder="名前、教科で検索" />
       <button class="search">検索</button>
     </div>
-    
     <div class="main">
-        <div class="button">
-          <button class="Japanese">あいうえお順</button>
-          <button class="English">ABC順</button>
-          <button class="Subject">科目</button>
-          <button class="review">評価順</button>
-         </div>
-         <div class="main-content">
-        </div>
+      <div class="sort">
+        <label><input type="radio" name="sort" value="Japanese"checked/>あいうえお順</label><br />
+        <label><input type="radio" name="sort" value="English" />ABC順</label><br />
+        <label><input type="radio" name="sort" value="Subject" />科目順</label><br />
+        <label><input type="radio" name="sort" value="Rate" />評価順<label><br />
+      </div>
+      <div class="main-content"></div>
     </div>
     <script src="index.js"></script>
   </body>
