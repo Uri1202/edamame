@@ -43,17 +43,30 @@
 }
 
 
-
-  
-    
-    
-
  .logo{
     margin: 4px;
     width:100px;
     height:80px;
-
-  }
+    animation: fluffy1 2s ease infinite; 
+}
+@keyframes fluffy1 {
+  0% {
+    transform: translateY(0); }
+  5% {
+    transform: translateY(0); }
+  10% {
+    transform: translateY(0); }
+  20% {
+    transform: translateY(-10px); }
+  25% {
+    transform: translateY(0); }
+  30% {
+    transform: translateY(-10px); }
+  50% {
+    transform: translateY(0); }
+  100% {
+    transform: translateY(0); } }
+  
 
 .title{
     font-family: 'Nikukyu';
@@ -66,6 +79,7 @@
     color: white;
     text-shadow: 2px 2px 1px black;
 }
+
 
 
 .main{
