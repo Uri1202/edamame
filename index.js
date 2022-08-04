@@ -114,6 +114,19 @@ function Sort_english() {
   Refresh();
 }
 
+//評価並び替え
+
+function Sort_rate() {
+  iconSortList.sort(function (a, b) {
+    if (a.rateAverage < b.rateAverage) {
+      return 1;
+    } else {
+      return -1;
+    }
+  });
+  Refresh();
+}
+
 //教科並び替え
 function Sort_subject() {
   Refresh("delete");
@@ -134,10 +147,11 @@ function Sort_subject() {
 const radioBtn1 = document.getElementsByName("sort")[0];
 const radioBtn2 = document.getElementsByName("sort")[1];
 const radioBtn3 = document.getElementsByName("sort")[2];
+const radioBtn4 = document.getElementsByName("sort")[3];
 radioBtn1.addEventListener("click", Sort_japanese, false);
 radioBtn2.addEventListener("click", Sort_english, false);
 radioBtn3.addEventListener("click", Sort_subject, false);
-
+radioBtn4.addEventListener("click", Sort_rate, false);
 //検索
 
 //名前検索
@@ -200,5 +214,5 @@ function Search() {
   }
 }
 
-const btn4 = document.getElementsByClassName("search")[0];
-btn4.addEventListener("click", Search, false);
+const btn = document.getElementsByClassName("search")[0];
+btn.addEventListener("click", Search, false);
