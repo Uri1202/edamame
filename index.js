@@ -119,7 +119,7 @@ function Sort_subject() {
   Refresh("delete");
   for (let sub of subjectList) {
     const subIconList = document.createElement("div");
-    subIconList.className = sub;
+    subIconList.className = "subject";
     subIconList.textContent = sub;
 
     for (let i = 0; i < iconSortList.length; i = i + 1) {
