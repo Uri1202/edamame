@@ -31,6 +31,7 @@ body {
 }
 
 
+<<<<<<< Updated upstream
 /*写真部分のcss*/
 #picture {
   width: 360px;
@@ -40,6 +41,9 @@ body {
   order: 0;
   flex-grow: 0;
 }
+=======
+
+>>>>>>> Stashed changes
 
 /*写真と名前の空白は？*/
 .blank {
