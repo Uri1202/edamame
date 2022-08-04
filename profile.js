@@ -18,7 +18,19 @@ for(let i=0;i<button_length;i++){
     });
 }
 
-let submitCount = 0;
+function sendSubmitCount(){
+    return fetch(baseUrl, {method: "GET"})
+    .then((res)=>{
+        return(res.json());
+    })
+    .then((body)=>{
+        body.find((id) => {
+            console.log(id=myId)
+        })
+    })
+}
+let submitCount = sendSubmitCount();
+
 let allStar = 0;
 function add_star(){
     submitCount++;
@@ -36,8 +48,7 @@ function add_star(){
     else if(starCountSum==2)  el.dataset.rate= "2";
     else if(starCountSum<2 && starCountSum>1)  el.dataset.rate= "1.5";
     else if(starCountSum==1)  el.dataset.rate= "1";
-    console.log(starCountSum);
-    console.log(el);
+    //console.log(starCountSum);
     fetch(baseUrl + "&id=" + myId + "&key=rateAverage",{//評価平均データを格納
         method:'PATCH',
         body: JSON.stringify(starCountSum),
