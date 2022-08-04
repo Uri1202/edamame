@@ -216,6 +216,7 @@
   
   .sort {
     float: left;
+    
   }
   
   .sort > input[type="radio"] {
@@ -238,4 +239,9 @@
     text-align: center;
     padding: 20px 0;
   }
+
+  
+
+
+  
   
