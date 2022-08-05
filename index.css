@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 .header {
     position: absolute;
     width: 1440px;
@@ -256,27 +255,3 @@ input:checked + label > p {
   text-align: center;
   padding: 20px 0;
 }
-
-
-
-  .sort > input[type="radio"] {
-    display: none;
-  }
-
-  .sort > label {
-    position: relative;
-    display: inline-block;
-    padding: 10px 5px 10px 5px;
-    background-color: rgb(255, 255, 255);
-    text-align: center;
-  }
-
-  .sort > input:checked + label {
-    margin-bottom: -1px;
-    background-color: #166678;
-  }
-  .subject {
-    text-align: center;
-    padding: 20px 0;
-  }
->>>>>>> aedc521b54d6ba846f93cfb888ce9c6a261db843
