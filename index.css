@@ -107,9 +107,11 @@
 
   .main {
     display: flex;
+    flex-flow: column;
     overflow-y: scroll;
     margin-top: 124px;
     font-size: 20px;
+    align-items: center ;
   }
 
   .scroll {
@@ -215,8 +217,9 @@
   } /* 星0 */
 
   .sort {
-    float: left;
+  display: flex;
 
+    
   }
 
   .sort > input[type="radio"] {
