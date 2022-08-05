@@ -217,11 +217,45 @@
   } /* 星0 */
 
   .sort {
-  display: flex;
-  color: white;
-  text-shadow: 2px 1px 5px#166678;
+  border-bottom: 1px solid #ccc;
+  margin: 0 auto;
+  padding: 0;
+  width: 50%;
+  text-align: center;
+  display: table;
+}
+label {
+  display: table-cell;
+  max-width: 30px;
+}
 
-  }
+.sort > input[type="radio"] {
+  display: none;
+}
+label:hover {
+  background-color: #f7f7f0;
+  opacity: 0.7;
+}
+label > p {
+  width: 100%;
+  padding: 10px 0;
+  text-decoration: none;
+  color: #aaa;
+  font-size: 15px;
+  font-weight: bold;
+}
+input:checked + label {
+  border-bottom: 2px solid black;
+}
+input:checked + label > p {
+  color: #0f0f0f;
+}
+.subject {
+  text-align: center;
+  padding: 20px 0;
+}
+
+
 
   .sort > input[type="radio"] {
     display: none;
