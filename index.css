@@ -225,7 +225,7 @@
   text-align: center;
   display: table;
 }
-label {
+.sort > label {
   display: table-cell;
   max-width: 30px;
 }
@@ -264,14 +264,21 @@ input:checked + label > p {
   flex-flow: column;
   margin-top: 120px;
   margin-right: 150px; 
-  background-color: #aaa;
-  width: 200px;
+  
 }
 
+.menu > input[type="radio"] {
+  display: none;
+}
 
+.menu > label{
+  max-width: 160px;
+  
+}
 
 .All{
   display: flex;
 }
+
   
 
