@@ -261,6 +261,8 @@ input:checked + label > p {
   flex-flow: column;
   margin-top: 120px;
   margin-right: 150px; 
+  background-color: #aaa;
+  width: 200px;
 }
 
 
