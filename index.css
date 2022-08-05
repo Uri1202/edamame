@@ -253,6 +253,10 @@ input:checked + label > p {
 }
 .subject {
   text-align: center;
+<<<<<<< HEAD
+  padding: 20px 0;
+}
+=======
   padding: 20px ;
 }
 
@@ -271,3 +275,4 @@ input:checked + label > p {
   display: flex;
 }
   
+>>>>>>> 4ac336cb6d1d549399f415a0ac8e81750b573cea
