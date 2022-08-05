@@ -218,8 +218,9 @@
 
   .sort {
   display: flex;
+  color: white;
+  text-shadow: 2px 1px 5px#166678;
 
-    
   }
 
   .sort > input[type="radio"] {
@@ -236,7 +237,7 @@
 
   .sort > input:checked + label {
     margin-bottom: -1px;
-    background-color: coral;
+    background-color: #166678;
   }
   .subject {
     text-align: center;
