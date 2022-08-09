@@ -1,3 +1,9 @@
+/* ERASER */
+@import url("https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@700&family=Oleo+Script+Swash+Caps&family=Sawarabi+Mincho&display=swap");
+body {
+  margin: 0px;
+}
+
 .header {
   z-index: 2;
   position: fixed;
@@ -50,7 +56,7 @@
   margin: 4px;
   width: 100px;
   height: 80px;
-  animation: fluffy1 2s ease 1;
+  animation: fluffy1 3s ease 10;
 }
 @keyframes fluffy1 {
   0% {
@@ -80,7 +86,7 @@
 }
 
 .title {
-  font-family: "Nikukyu";
+  font-family: "Kaisei Decol", serif;
   font-style: normal;
   font-weight: 600;
   font-size: 34px;
@@ -89,7 +95,7 @@
   align-items: center;
   color: white;
   text-shadow: 2px 2px 1px black;
-  animation: fluffy1 2s ease 1;
+  animation: fluffy1 3s ease 1;
 }
 @keyframes fluffy1 {
   0% {
@@ -121,27 +127,38 @@
 .main {
   display: flex;
   flex-flow: column;
-  overflow-y: scroll;
-  margin: 150px 0px 0px 180px;
+  margin: 150px 0px 0px 300px;
   font-size: 20px;
   align-items: center;
 }
-
-.scroll {
-  overflow: scroll;
+.background {
+  background-size: 10% 100%;
+}
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
-.main-content {
+.main-content1 {
+  min-width: 900px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  counter-reset: rank 0;
+}
+.main-content2 {
+  display: flex;
 }
 
 .teacher {
   font-family: "Hannari";
   text-decoration: none;
   display: flex;
-  gap: 60px;
+  gap: 30px;
   background: #ededed;
   padding: 32px 30px 32px 20px;
   color: black;
@@ -153,6 +170,7 @@
   border-radius: 8px;
   box-shadow: 2px 2px 8px #dddddd;
   transition: 300ms;
+  animation: fadein 3s forwards;
 }
 
 .teacher:hover {
@@ -162,6 +180,7 @@
 
 .iconName {
   font-size: 20px;
+  width: 300px;
 }
 .iconImg {
   width: 50px;
@@ -170,6 +189,7 @@
 }
 
 .star5_rating {
+  position: relative;
   margin: 0 0 0 auto;
   z-index: 0;
   display: inline-block;
@@ -186,8 +206,8 @@
 
 .star5_rating:after {
   text-shadow: 1px 0px 2px black;
-  position: relative;
-  left: -5em;
+  position: absolute;
+  left: 0em;
   z-index: 1;
   top: 0;
   overflow: hidden;
@@ -229,12 +249,15 @@
   width: 0%;
 } /* 星0 */
 h2 {
+  position: relative;
   margin-left: 157px;
-  width: 61%;
+  margin-right: 157px;
+  width: 600px;
   padding: 1rem 2rem;
   border-top: 3px solid #000;
   border-bottom: 3px solid #000;
 }
+
 .sort {
   border-bottom: 1px solid #ccc;
   margin: 0 auto;
@@ -271,16 +294,12 @@ h2 {
 .sort > input:checked + label > p {
   color: #0f0f0f;
 }
-.subject {
-  text-align: center;
-  padding: 20px;
-}
 
 .menu {
   position: fixed;
   display: flex;
   flex-flow: column;
-  margin: 104px 100px 0px 0px;
+  margin: 110px 100px 0px 0px;
   width: 240px;
   background-color: #3e9db3;
   text-align: center;
@@ -305,9 +324,7 @@ h2 {
   font-weight: bold;
   text-shadow: 1px 3px 10px black;
 }
-.menu > input:checked + label {
-  border: solid 10px white;
-}
+
 .menu > input:checked + label > p {
   color: white;
 }
@@ -320,15 +337,16 @@ h2 {
 
 .menu > label {
   max-width: 240px;
+  border-bottom: 1px solid black;
 }
-
+.menu > label:last-child {
+  border: none;
+}
 .toggle_input {
-  position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  z-index: 5;
   opacity: 0;
   cursor: pointer;
 }
@@ -352,30 +370,268 @@ h2 {
   border-radius: 100%;
   left: 0;
   top: 0;
-  z-index: 2;
   background: #fff;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   transition: 0.4s;
 }
 
 .toggle_input:checked + .toggle_label {
-  background-color: #166678;
+  background-color: #4bd865;
 }
-
 .toggle_input:checked + .toggle_label:after {
   left: 40px;
 }
 
 .toggle_button {
   align-items: top;
-  position: relative;
+  position: fixed;
   width: 75px;
   height: 35px;
-  margin-top: 360px;
+  margin-top: 310px;
   margin-left: 20px;
 }
 
 .button {
-  margin-top: 0px;
+  margin-top: 8px;
   margin-left: 80px;
+  line-height: 0.95em;
+  font-weight: bold;
+  color: white;
+  text-shadow: -1px 0 #166678, 0 1px #166678, 1px 0 #166678, 0 -1px #166678;
+}
+.tableTitle {
+  margin-bottom: 50px;
+  font-family: "Kaisei Decol", serif;
+  position: relative;
+  padding: 10px 3em;
+  padding-left: 10%;
+  font-size: 40px;
+}
+
+.tableTitle:before {
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  width: 95%;
+  height: 10px;
+  content: "";
+  border-bottom: 2px solid #000;
+  border-right: 2px solid #000;
+  transform: skew(55deg);
+}
+
+.tableTitle:after {
+  position: absolute;
+  bottom: 2px;
+  left: -webkit-calc(5% - 6px);
+  left: calc(5% - 6px);
+  width: 95%;
+  height: 10px;
+  content: "";
+  border-right: 2px solid #000;
+  transform: skew(55deg);
+}
+.wittTitle {
+  font-family: "Kaisei Decol", serif;
+  position: relative;
+  padding: 10px 3em;
+  padding-left: 10%;
+  font-size: 40px;
+}
+
+.wittTitle:before {
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  width: 95%;
+  height: 10px;
+  content: "";
+  border-bottom: 2px solid #000;
+  border-right: 2px solid #000;
+  transform: skew(55deg);
+}
+
+.wittTitle:after {
+  position: absolute;
+  bottom: 2px;
+  left: -webkit-calc(5% - 6px);
+  left: calc(5% - 6px);
+  width: 95%;
+  height: 10px;
+  content: "";
+  border-right: 2px solid #000;
+  transform: skew(55deg);
+}
+.boardTitle {
+  margin-bottom: 50px;
+  font-family: "Kaisei Decol", serif;
+  position: relative;
+  padding: 10px 3em;
+  padding-left: 10%;
+  font-size: 40px;
+}
+
+.boardTitle:before {
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  width: 95%;
+  height: 10px;
+  content: "";
+  border-bottom: 2px solid #000;
+  border-right: 2px solid #000;
+  transform: skew(55deg);
+}
+
+.boardTitle:after {
+  position: absolute;
+  bottom: 2px;
+  left: -webkit-calc(5% - 6px);
+  left: calc(5% - 6px);
+  width: 95%;
+  height: 10px;
+  content: "";
+  border-right: 2px solid #000;
+  transform: skew(55deg);
+}
+
+.teacherWitt {
+  display: flex;
+  border-bottom: 3px dotted #aaa;
+  min-width: 900px;
+  animation: fadein 3s forwards;
+}
+.teacherWitt::before {
+  font-size: 40px;
+  counter-increment: rank;
+  content: counter(rank);
+  font-family: "Oleo Script Swash Caps", cursive;
+}
+.witt {
+  font-family: "Sawarabi Mincho", serif;
+  position: relative;
+  display: inline-block;
+  margin: 50px 0 1.5em 15px;
+  padding: 60px 40px;
+  min-width: 120px;
+  max-width: 100%;
+  color: #555;
+  font-size: 30px;
+  background: #e0edff;
+  border-radius: 15px;
+}
+.witt:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  margin-top: -15px;
+  border: 15px solid transparent;
+  border-right: 15px solid #e0edff;
+}
+
+.witt p {
+  margin: 0;
+  padding: 0;
+}
+
+.icon {
+  display: flex;
+  flex-flow: column;
+}
+
+.human {
+  width: 80px;
+  height: 80px;
+  margin-top: 78px;
+}
+
+.news {
+  width: 280px;
+  height: 350px;
+  border: solid 1px #dfdfdf;
+  border-radius: 8px;
+  box-shadow: 2px 2px 8px #dddddd;
+  transition: 300ms;
+  text-align: center;
+  animation: fadein 3s forwards;
+  gap: 5px;
+}
+
+.news:hover {
+  transform: scale(1.5);
+  z-index: 10;
+  background-color: white;
+}
+.newsRibbon {
+  display: block;
+  position: relative;
+  margin: 15px auto;
+  padding: 10px 0;
+  width: 300px;
+}
+.newsTitle {
+  font-size: 26px;
+  max-width: 100%;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  padding: 10px;
+  margin: 0 0 0 -20px;
+  width: calc(100% + 20px);
+  font-size: 22px;
+  color: white;
+  background: #70a6ff;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.newsTitle:before {
+  position: absolute;
+  content: "";
+  top: 100%;
+  left: 0;
+  border: none;
+  border-bottom: solid 15px transparent;
+  border-right: solid 20px #6081b7;
+}
+
+.newsContent {
+  font-size: 16px;
+  text-decoration: underline dotted;
+  display: inline-block;
+  max-width: 80%;
+}
+
+.wittTitle {
+  animation: slideIn 1.6s 1;
+}
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.boardTitle {
+  animation: slideIn 1.6s 1;
+}
+.tableTitle {
+  animation: slideIn 1.6s 1;
+}
+
+.wittLike {
+  position: relative;
+}
+.wittHeart {
+  position: absolute;
+  left: -48px;
+  background: url("./img/heart_animation.png");
+  background-position: left;
+  background-size: 2900%;
+  background-repeat: no-repeat;
+  width: 105px;
+  height: 105px;
 }
