@@ -143,6 +143,35 @@ body {
 
 
 }
+h1{
+  /* 担当科目 */
+
+
+width: 64px;
+height: 24px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 150%;
+/* identical to box height, or 24px */
+
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #000000;
+
+
+/* Inside auto layout */
+
+flex: none;
+order: 10;
+flex-grow: 0;
+
+
+}
 
 #subject {
   /* Line 2 */
@@ -228,6 +257,9 @@ body {
   order: 0;
   flex-grow: 0;
 
+<<<<<<< HEAD
+}
+=======
 }
 
 .star5_rating{
@@ -266,3 +298,4 @@ body {
 .star5_rating[data-rate="1"]:after{ width: 20%; } /* 星1 */
 .star5_rating[data-rate="0.5"]:after{ width: 10%; } /* 星0.5 */
 .star5_rating[data-rate="0"]:after{ width: 0%; } /* 星0 */
+>>>>>>> 8d696ade9cc2b8803107b0358b57fbab5ef0ba97
