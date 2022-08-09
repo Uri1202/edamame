@@ -85,7 +85,7 @@ body {
   }
 }
 
-.title {
+.mainTitle {
   font-family: "Kaisei Decol", serif;
   font-style: normal;
   font-weight: 600;
@@ -96,6 +96,9 @@ body {
   color: white;
   text-shadow: 2px 2px 1px black;
   animation: fluffy1 3s ease 1;
+}
+.Title {
+  min-width: 900px;
 }
 @keyframes fluffy1 {
   0% {
@@ -259,12 +262,12 @@ h2 {
 }
 
 .sort {
+  margin-left: 153px;
+  margin-top: 50px;
   border-bottom: 1px solid #ccc;
-  margin: 0 auto;
   padding: 0;
   width: 670px;
   height: 10px;
-  text-align: center;
   display: table;
 }
 .radio {
@@ -281,6 +284,7 @@ h2 {
   opacity: 0.7;
 }
 .radio > p {
+  text-align: center;
   padding-bottom: 0px;
   color: #aaa;
   font-size: 20px;
@@ -399,8 +403,8 @@ h2 {
   color: white;
   text-shadow: -1px 0 #166678, 0 1px #166678, 1px 0 #166678, 0 -1px #166678;
 }
-.tableTitle {
-  margin-bottom: 50px;
+
+.title {
   font-family: "Kaisei Decol", serif;
   position: relative;
   padding: 10px 3em;
@@ -408,7 +412,7 @@ h2 {
   font-size: 40px;
 }
 
-.tableTitle:before {
+.title:before {
   position: absolute;
   bottom: 0;
   left: 5%;
@@ -416,81 +420,6 @@ h2 {
   height: 10px;
   content: "";
   border-bottom: 2px solid #000;
-  border-right: 2px solid #000;
-  transform: skew(55deg);
-}
-
-.tableTitle:after {
-  position: absolute;
-  bottom: 2px;
-  left: -webkit-calc(5% - 6px);
-  left: calc(5% - 6px);
-  width: 95%;
-  height: 10px;
-  content: "";
-  border-right: 2px solid #000;
-  transform: skew(55deg);
-}
-.wittTitle {
-  font-family: "Kaisei Decol", serif;
-  position: relative;
-  padding: 10px 3em;
-  padding-left: 10%;
-  font-size: 40px;
-}
-
-.wittTitle:before {
-  position: absolute;
-  bottom: 0;
-  left: 5%;
-  width: 95%;
-  height: 10px;
-  content: "";
-  border-bottom: 2px solid #000;
-  border-right: 2px solid #000;
-  transform: skew(55deg);
-}
-
-.wittTitle:after {
-  position: absolute;
-  bottom: 2px;
-  left: -webkit-calc(5% - 6px);
-  left: calc(5% - 6px);
-  width: 95%;
-  height: 10px;
-  content: "";
-  border-right: 2px solid #000;
-  transform: skew(55deg);
-}
-.boardTitle {
-  margin-bottom: 50px;
-  font-family: "Kaisei Decol", serif;
-  position: relative;
-  padding: 10px 3em;
-  padding-left: 10%;
-  font-size: 40px;
-}
-
-.boardTitle:before {
-  position: absolute;
-  bottom: 0;
-  left: 5%;
-  width: 95%;
-  height: 10px;
-  content: "";
-  border-bottom: 2px solid #000;
-  border-right: 2px solid #000;
-  transform: skew(55deg);
-}
-
-.boardTitle:after {
-  position: absolute;
-  bottom: 2px;
-  left: -webkit-calc(5% - 6px);
-  left: calc(5% - 6px);
-  width: 95%;
-  height: 10px;
-  content: "";
   border-right: 2px solid #000;
   transform: skew(55deg);
 }
@@ -628,7 +557,7 @@ h2 {
 .wittHeart {
   position: absolute;
   left: -48px;
-  background: url("./img/heart_animation.png");
+  background: url("https://prcm.jp/album/154d213b33c80/pic/55708732");
   background-position: left;
   background-size: 2900%;
   background-repeat: no-repeat;

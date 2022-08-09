@@ -110,8 +110,16 @@ function Delete_Data(profileData) {
   });
 }
 */
+
 const background = document.getElementsByClassName("background")[0];
 const iconList = document.getElementsByClassName("main-content1")[0];
+const title = document.getElementsByClassName("Title")[0];
+
+const radioBtn = document.getElementsByClassName("sort")[0];
+const displayOriginal1 = radioBtn.style.display;
+
+const toggleButton = document.getElementsByClassName("toggle_button")[0];
+const displayOriginal2 = toggleButton.style.display;
 
 const teacherTitle = document.createElement("div");
 teacherTitle.className = "title";
@@ -125,11 +133,6 @@ const newsTitle = document.createElement("div");
 newsTitle.className = "title";
 newsTitle.textContent = "掲示板";
 
-function RefreshTitle(mode) {
-  DeleteAllIcons();
-  if (mode === "teacher") {
-  }
-}
 let btnNum = 0;
 const backgroundUrl = "https://gahag.net/007558-chalkboard-background/";
 const iconSortList = [];
@@ -142,6 +145,7 @@ Get_Profile().then((profileData) => {
   }
   */
   RefreshBG("delete");
+  RefreshTitle("teacher");
   for (let i = 0; i < profileData.length; i = i + 1) {
     iconSortList.push(profileData[i]);
   }
@@ -160,6 +164,23 @@ Get_Profile().then((profileData) => {
   }
 });
 
+//タイトルの削除
+
+function DeleteTitle() {
+  title.removeChild(title.lastChild);
+}
+//タイトルの変更
+
+function RefreshTitle(mode) {
+  DeleteTitle();
+  if (mode === "teacher") {
+    title.append(teacherTitle);
+  } else if (mode === "witt") {
+    title.append(wittTitle);
+  } else if (mode === "news") {
+    title.append(newsTitle);
+  }
+}
 //タグの削除
 function DeleteAllIcons() {
   while (iconList.lastChild) {
@@ -170,7 +191,12 @@ function DeleteAllIcons() {
 //順番を変えたタグを投げる
 function Refresh(mode) {
   DeleteAllIcons();
+
   if (mode === "sort") {
+    RefreshTitle("teacher");
+    RefreshBtn("teacher");
+    radioBtn.style.display = displayOriginal1;
+
     if (radioBtn3.checked === true) {
       Sort_subject();
     } else {
@@ -179,10 +205,18 @@ function Refresh(mode) {
       }
     }
   } else if (mode === "witt") {
+    RefreshTitle("witt");
+    RefreshBtn("witt");
+    radioBtn.style.display = "none";
+
     for (let i = 0; i < iconSortList.length; i = i + 1) {
       iconList.append(CreateWitt(iconSortList[i]));
     }
   } else if (mode === "news") {
+    RefreshTitle("news");
+    RefreshBtn("news");
+    radioBtn.style.display = "none";
+
     for (let i = 0; i < 9; i = i + 1) {
       iconList.append(CreateNews());
     }
@@ -192,7 +226,12 @@ function Refresh(mode) {
 function Refresh_value(mode) {
   return () => {
     DeleteAllIcons();
+
     if (mode === "sort") {
+      RefreshTitle("teacher");
+      RefreshBtn("teacher");
+      radioBtn.style.display = displayOriginal1;
+
       if (radioBtn3.checked === true) {
         Sort_subject();
       } else {
@@ -201,17 +240,27 @@ function Refresh_value(mode) {
         }
       }
     } else if (mode === "witt") {
+      RefreshTitle("witt");
+      RefreshBtn("witt");
+      radioBtn.style.display = "none";
+
       for (let i = 0; i < iconSortList.length; i = i + 1) {
         iconList.append(CreateWitt(iconSortList[i]));
       }
     } else if (mode === "news") {
+      RefreshTitle("news");
+      RefreshBtn("news");
+      radioBtn.style.display = "none";
+
       for (let i = 0; i < 9; i = i + 1) {
         iconList.append(CreateNews());
       }
     }
   };
 }
+
 //背景変更
+
 function RefreshBG(mode) {
   if (mode === "news") {
     background.style.backgroundImage = "url(" + backgroundUrl + ")";
@@ -228,6 +277,20 @@ function RefreshBG_value(mode) {
       background.style.background = "none";
     }
   };
+}
+
+//ボタン変更
+function RefreshBtn(mode) {
+  if (mode === "teacher") {
+    radioBtn.style.display = displayOriginal1;
+    toggleButton.style.display = displayOriginal2;
+  } else if (mode === "witt") {
+    radioBtn.style.display = "none";
+    toggleButton.style.display = "none";
+  } else if (mode === "news") {
+    radioBtn.style.display = "none";
+    toggleButton.style.display = "none";
+  }
 }
 //日本語並び替え
 
