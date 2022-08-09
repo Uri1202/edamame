@@ -11,11 +11,6 @@ body {
 
 /*大まかな左側のcss*/
 #left {
-  /* infomation */
-
-
-  /* Auto layout */
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -50,12 +45,22 @@ body {
   height: 36px;
 
   background: #FFFFFF;
+}
+/*名前と星の間の空白？*/
+.blank {
+  /* Auto layout */
 
-  /* Inside auto layout */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 16px;
+  gap: 24px;
 
-  flex: none;
-  order: 1;
-  flex-grow: 0;
+  width: 174px;
+  height: 60px;
+
+  background: #FFFFFF;
 }
 
 #name {
@@ -79,40 +84,8 @@ body {
   /* Inside auto layout */
 
   flex: none;
-  order: 2;
   flex-grow: 0;
-
-
-
-
-
 }
-
-/*名前と星の間の空白？*/
-:blank #Star {
-  /* Auto layout */
-
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 0px 16px;
-  gap: 24px;
-
-  width: 174px;
-  height: 60px;
-
-  background: #FFFFFF;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 6;
-  flex-grow: 0;
-
-}
-
-
 
 #button {
   /* touhyou */
@@ -161,35 +134,6 @@ body {
 
 
 
-h1{
-  /* 担当科目 */
-
-
-width: 64px;
-height: 24px;
-
-font-family: 'Inter';
-font-style: normal;
-font-weight: 400;
-font-size: 16px;
-line-height: 150%;
-/* identical to box height, or 24px */
-
-display: flex;
-align-items: center;
-text-align: center;
-
-color: #000000;
-
-
-/* Inside auto layout */
-
-flex: none;
-order: 10;
-flex-grow: 0;
-
-
-}
 
 #subject {
   /* Line 2 */
@@ -274,14 +218,10 @@ flex-grow: 0;
   flex: none;
   order: 0;
   flex-grow: 0;
-
-<<<<<<< HEAD
-}
-=======
 }
 
 .star5_rating{
-  margin: 0 0 0 auto;
+  position: relative;
   z-index: 0;
   display: inline-block;
   white-space: nowrap;
@@ -295,8 +235,8 @@ flex-grow: 0;
 }
 
 .star5_rating:after{
-  position: relative;
-  left: -5em;
+  position: absolute;
+  left: 0;
   z-index: 1;
   top: 0;
   left: 0;
@@ -316,4 +256,3 @@ flex-grow: 0;
 .star5_rating[data-rate="1"]:after{ width: 20%; } /* 星1 */
 .star5_rating[data-rate="0.5"]:after{ width: 10%; } /* 星0.5 */
 .star5_rating[data-rate="0"]:after{ width: 0%; } /* 星0 */
->>>>>>> 8d696ade9cc2b8803107b0358b57fbab5ef0ba97
