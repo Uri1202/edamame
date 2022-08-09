@@ -125,6 +125,11 @@ const newsTitle = document.createElement("div");
 newsTitle.className = "title";
 newsTitle.textContent = "掲示板";
 
+function RefreshTitle(mode) {
+  DeleteAllIcons();
+  if (mode === "teacher") {
+  }
+}
 let btnNum = 0;
 const backgroundUrl = "https://gahag.net/007558-chalkboard-background/";
 const iconSortList = [];
