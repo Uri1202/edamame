@@ -26,7 +26,7 @@ function sendStarCountSum() {
     })
     .then((body) => {
       body.find((id, rateAverage) => {
-        if (id === myId) return rateAverage;
+        if ((id = myId)) return rateAverage;
       });
     });
 }

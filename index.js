@@ -3,7 +3,7 @@ const baseUrl = "https://us-central1-aizuhack-353413.cloudfunctions.net";
 //icon
 function CreateIcon(profileData) {
   const iconData = document.createElement("a");
-  iconData.href = "profile.html?id=" + profileData.id;
+  iconData.href = "profile2.html?id=" + profileData.id;
   iconData.className = "teacher";
 
   //名前、画像,星評価のタグ作り
@@ -90,16 +90,17 @@ function CreateSB(mode) {
   }
 
   const sub_searchBtn = document.createElement("button");
-  sub_searchBtn.className = "subSearchBtn";
+  sub_searchBtn.className = "searchBtn";
 
   searchBox.append(searchInput, sub_searchBtn);
   return searchBox;
 }
-/*
+
 //テスト用のpost　↓
 
 //先生のデータ
-function PostTecher() {
+/*
+function PostTeacher() {
   const profile_data = {
     name: {
       hiragana: "かー　にこらす",
@@ -165,11 +166,18 @@ function Delete_Data(profileData) {
   });
 }
 */
-
 const background = document.getElementsByClassName("background")[0];
 const iconList = document.getElementsByClassName("main-content1")[0];
 const Title = document.getElementsByClassName("Title")[0];
 const SearchBox = document.getElementsByClassName("SearchBox")[0];
+
+const radioBtn1 = document.getElementsByName("sort")[0];
+const radioBtn2 = document.getElementsByName("sort")[1];
+const radioBtn3 = document.getElementsByName("sort")[2];
+const radioBtn4 = document.getElementsByName("sort")[3];
+const radioBtn5 = document.getElementsByName("menu")[0];
+const radioBtn6 = document.getElementsByName("menu")[1];
+const radioBtn7 = document.getElementsByName("menu")[2];
 
 const radioBtn = document.getElementsByClassName("sort")[0];
 const displayOriginal1 = radioBtn.style.display;
@@ -192,26 +200,19 @@ newsTitle.textContent = "掲示板";
 let btnNum = 0;
 const backgroundUrl = "https://gahag.net/007558-chalkboard-background/";
 const iconSortList = [];
+const newsList = [];
 const subjectList = ["数学", "英語", "物理", "プログラミング"];
 
 Get_Profile().then((profileData) => {
   /*
   for (let i = 0; i < profileData.length; i = i + 1) {
     Delete_Data(profileData[i]);
-  }
-  */
-
-  RefreshBG("delete");
-  RefreshTitle("teacher");
-  RefreshSB("teacher");
-
-  const subSearchBtn = document.getElementsByClassName("subSearchBtn")[0];
-  console.log(subSearchBtn);
+  }*/
 
   for (let i = 0; i < profileData.length; i = i + 1) {
     iconSortList.push(profileData[i]);
   }
-  //日本語並び替え(デフォルト)
+  //日本語並び替え(デフォルト
   iconSortList.sort(function (a, b) {
     if (a.name.hiragana > b.name.hiragana) {
       return 1;
@@ -219,11 +220,17 @@ Get_Profile().then((profileData) => {
       return -1;
     }
   });
-  for (let i = 0; i < iconSortList.length; i = i + 1) {
-    iconList.append(CreateIcon(iconSortList[i]));
-  }
+  RefreshTitle("teacher");
+  RefreshBtn("teacher");
+  RefreshSB("teacher");
+  Refresh("sort");
 });
 
+Get_News().then((newsData) => {
+  for (let i = 0; i < newsData.length; i = i + 1) {
+    newsList.push(newsData[i]);
+  }
+});
 //タイトルの削除
 
 function DeleteTitle() {
@@ -287,6 +294,7 @@ function Refresh(mode) {
   } else if (mode === "witt") {
     RefreshTitle("witt");
     RefreshBtn("witt");
+    RefreshSB("witt");
     radioBtn.style.display = "none";
 
     for (let i = 0; i < iconSortList.length; i = i + 1) {
@@ -295,6 +303,7 @@ function Refresh(mode) {
   } else if (mode === "news") {
     RefreshTitle("news");
     RefreshBtn("news");
+    RefreshSB("news");
     radioBtn.style.display = "none";
 
     DisplayNewsList();
@@ -309,7 +318,6 @@ function Refresh_value(mode) {
       RefreshTitle("teacher");
       RefreshBtn("teacher");
       RefreshSB("teacher");
-      console.log("a");
       radioBtn.style.display = displayOriginal1;
 
       if (radioBtn3.checked === true) {
@@ -341,14 +349,6 @@ function Refresh_value(mode) {
 
 //背景変更
 
-function RefreshBG(mode) {
-  if (mode === "news") {
-    background.style.backgroundImage = "url(" + backgroundUrl + ")";
-  } else if (mode === "delete") {
-    background.style.background = "none";
-  }
-}
-
 function RefreshBG_value(mode) {
   return () => {
     if (mode === "news") {
@@ -376,6 +376,7 @@ function RefreshBtn(mode) {
 
 function Sort_japanese() {
   btnNum = 0;
+  console.log(iconSortList);
   iconSortList.sort(function (a, b) {
     if (a.name.hiragana > b.name.hiragana) {
       return 1;
@@ -448,22 +449,45 @@ function Sort_subject() {
   }
 }
 
-const radioBtn1 = document.getElementsByName("sort")[0];
-const radioBtn2 = document.getElementsByName("sort")[1];
-const radioBtn3 = document.getElementsByName("sort")[2];
-const radioBtn4 = document.getElementsByName("sort")[3];
 radioBtn1.addEventListener("click", Sort_japanese, false);
 radioBtn2.addEventListener("click", Sort_english, false);
 radioBtn3.addEventListener("click", Sort_subject, false);
 radioBtn4.addEventListener("click", Sort_rate, false);
+
 //検索
 
 function SubSearch() {
-  const searchInput = document.getElementsByclassName("searchInput")[0];
-  console.log("ad");
-  if (searchInput.placeholder === "先生") {
-    Search();
+  const SearchBtn = document.getElementsByClassName("searchBtn")[0];
+  function search() {
+    DeleteAllIcons();
+    const textContent = document.getElementsByClassName("searchInput")[0];
+
+    if (textContent.placeholder === "先生") {
+      const pickIconList1 = Search_name(textContent.value);
+      const pickIconList2 = Search_subject(textContent.value);
+
+      if (pickIconList1 !== 0) {
+        for (let icon of pickIconList1) {
+          iconList.append(icon);
+        }
+      } else if (pickIconList2 !== 0) {
+        iconList.append(pickIconList2);
+      }
+    } else if (textContent.placeholder === "名言") {
+      const pickIconList1 = Search_witt(textContent.value);
+
+      for (let icon of pickIconList1) {
+        iconList.append(icon);
+      }
+    } else if (textContent.placeholder === "タイトル") {
+      const pickIconList1 = Search_news(textContent.value);
+
+      for (let news of pickIconList1) {
+        iconList.append(news);
+      }
+    }
   }
+  SearchBtn.addEventListener("click", search, false);
 }
 
 //名前検索
@@ -510,6 +534,41 @@ function Search_subject(textContent) {
   }
 }
 
+//名言検索
+
+function Search_witt(textContent) {
+  const pickIconList = [];
+  for (let iconData of iconSortList) {
+    if (iconData.witticism.includes(textContent)) {
+      pickIconList.push(CreateWitt(iconData));
+    }
+  }
+
+  if (pickIconList.length !== 0) {
+    return pickIconList;
+  } else {
+    return 0;
+  }
+}
+
+//ニュース検索
+function Search_news(textContent) {
+  const pickIconList = [];
+  for (let newsData of newsList) {
+    if (
+      newsData.content.includes(textContent) ||
+      newsData.title.includes(textContent)
+    ) {
+      pickIconList.push(CreateNews(newsData));
+    }
+  }
+  if (pickIconList.length !== 0) {
+    return pickIconList;
+  } else {
+    return 0;
+  }
+}
+
 function Search() {
   btnNum = 1;
   DeleteAllIcons();
@@ -532,15 +591,13 @@ mainSearchBtn.addEventListener("click", Search, false);
 
 //メニュー切り替え
 
-const radioBtn5 = document.getElementsByName("menu")[0];
-const radioBtn6 = document.getElementsByName("menu")[1];
-const radioBtn7 = document.getElementsByName("menu")[2];
 radioBtn5.addEventListener("click", Refresh_value("sort"), false);
 radioBtn6.addEventListener("click", Refresh_value("witt"), false);
 radioBtn7.addEventListener("click", Refresh_value("news"), false);
 radioBtn5.addEventListener("click", RefreshBG_value("delete"), false);
 radioBtn6.addEventListener("click", RefreshBG_value("delete"), false);
 radioBtn7.addEventListener("click", RefreshBG_value("news"), false);
+
 //言語切り替え
 
 function Switch() {
@@ -559,11 +616,11 @@ function CreateWittDetail(profileData) {
   wittData.className = "teacherWittSingle";
 
   const teacherImg = document.createElement("img");
-  teacherImg.className = "Img";
+  teacherImg.className = "wittImg";
   teacherImg.src = profileData.imageUrl;
 
   const teacherName = document.createElement("div");
-  teacherName.className = "Name";
+  teacherName.className = "wittName";
   teacherName.textContent = profileData.name.hiragana;
 
   const witt = document.createElement("div");
@@ -611,3 +668,7 @@ function DisplayNewsList() {
     }
   });
 }
+
+radioBtn5.addEventListener("click", SubSearch, false);
+radioBtn6.addEventListener("click", SubSearch, false);
+radioBtn7.addEventListener("click", SubSearch, false);
