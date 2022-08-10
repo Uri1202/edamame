@@ -98,8 +98,30 @@ body {
   animation: fluffy1 3s ease 1;
 }
 .Title {
-  min-width: 900px;
+  min-width: 1000px;
+  margin-bottom: 30px;
 }
+.title {
+  font-family: "Kaisei Decol", serif;
+  position: relative;
+  padding: 10px 3em;
+  padding-left: 10%;
+  font-size: 40px;
+  animation: slideIn 1.6s 1;
+}
+
+.title:before {
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  width: 95%;
+  height: 10px;
+  content: "";
+  border-bottom: 2px solid #000;
+  border-right: 2px solid #000;
+  transform: skew(55deg);
+}
+
 @keyframes fluffy1 {
   0% {
     transform: translateY(0);
@@ -403,27 +425,6 @@ h2 {
   color: white;
   text-shadow: -1px 0 #166678, 0 1px #166678, 1px 0 #166678, 0 -1px #166678;
 }
-
-.title {
-  font-family: "Kaisei Decol", serif;
-  position: relative;
-  padding: 10px 3em;
-  padding-left: 10%;
-  font-size: 40px;
-}
-
-.title:before {
-  position: absolute;
-  bottom: 0;
-  left: 5%;
-  width: 95%;
-  height: 10px;
-  content: "";
-  border-bottom: 2px solid #000;
-  border-right: 2px solid #000;
-  transform: skew(55deg);
-}
-
 .teacherWitt {
   display: flex;
   border-bottom: 3px dotted #aaa;
@@ -485,6 +486,7 @@ h2 {
   text-align: center;
   animation: fadein 3s forwards;
   gap: 5px;
+  float: left;
 }
 
 .news:hover {
@@ -530,6 +532,10 @@ h2 {
   display: inline-block;
   max-width: 80%;
 }
+.newsList {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 
 .wittTitle {
   animation: slideIn 1.6s 1;
@@ -544,12 +550,6 @@ h2 {
     transform: translateX(0);
   }
 }
-.boardTitle {
-  animation: slideIn 1.6s 1;
-}
-.tableTitle {
-  animation: slideIn 1.6s 1;
-}
 
 .wittLike {
   position: relative;
@@ -563,4 +563,63 @@ h2 {
   background-repeat: no-repeat;
   width: 105px;
   height: 105px;
+}
+
+.searchBox {
+  position: absolute;
+  top: 20%;
+  left: 70%;
+  background: #2f3640;
+  height: 40px;
+  border-radius: 40px;
+  padding: 10px;
+  animation: fadein 5s forwards;
+  display: flex;
+}
+
+.searchBtn {
+  color: white;
+  float: right;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+  background: white;
+  color: #2f3640;
+}
+
+.searchInput {
+  border: none;
+  background: none;
+  outline: none;
+  float: left;
+  color: white;
+  font-size: 16px;
+  transition: 0.4s;
+  line-height: 40px;
+  width: 240px;
+  padding: 0 6px;
+}
+
+.searchBtn::before {
+  position: absolute;
+  content: "";
+  width: 15px;
+  height: 15px;
+  top: calc(50% - 9px);
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px black;
+}
+.searchBtn::after {
+  position: absolute;
+  content: "";
+  width: 8px;
+  height: 6px;
+  top: calc(50% + 4px);
+  right: calc(35px);
+  border-top: solid 2px black;
+  transform: rotate(130deg);
 }
