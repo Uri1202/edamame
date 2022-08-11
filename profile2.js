@@ -122,6 +122,7 @@ Get_Profile().then((PD_cloud) => {
       profileData = PD_cloud[i];
     }
   }
+  console.log("profileData: ", profileData);
 
   AddProfile(profileData);
   AddComment(profileData);

@@ -190,7 +190,6 @@ const displayOriginal1 = radioBtn.style.display;
 const toggleBtn = document.getElementsByClassName("toggle_input")[0];
 const toggleTag = document.getElementsByClassName("toggle_button")[0];
 const displayOriginal2 = toggleTag.style.display;
-console.log(displayOriginal2);
 
 const teacherTitle = document.createElement("div");
 teacherTitle.className = "title";
@@ -314,7 +313,6 @@ function Refresh(mode) {
     RefreshSB("witt");
 
     for (let i = 0; i < iconSortList.length; i = i + 1) {
-      console.log(iconSortList[i].witticism);
       if (iconSortList[i].witticism !== "") {
         iconList.append(CreateWitt(iconSortList[i]));
       }
@@ -350,7 +348,6 @@ function Refresh_value(mode) {
       RefreshSB("witt");
 
       for (let i = 0; i < iconSortList.length; i = i + 1) {
-        console.log(iconSortList[i].witticism);
         if (iconSortList[i].witticism !== "") {
           iconList.append(CreateWitt(iconSortList[i]));
         }
@@ -394,7 +391,7 @@ function RefreshBtn(mode) {
 
 function Sort_japanese() {
   btnNum = 0;
-  console.log(iconSortList);
+
   iconSortList.sort(function (a, b) {
     if (a.name.hiragana > b.name.hiragana) {
       return 1;
@@ -687,8 +684,18 @@ function DisplayWitt() {
   const witt = document.getElementsByClassName("witt");
   function AppendWitt(i) {
     return () => {
-      DeleteAllIcons();
-      iconList.append(CreateWittDetail(iconSortList[i]));
+      for (let iconData of iconSortList) {
+        let wittLen = witt[i].textContent.length;
+        console.log(witt[i].textContent.slice(0, wittLen - 7));
+        console.log(iconData.name.hiragana);
+        if (iconData.name.hiragana === "きはら　ひろし" && i === 0) {
+          DeleteAllIcons();
+          iconList.append(CreateWittDetail(iconData));
+        } else if (iconData.name.hiragana === "すず" && i === 1) {
+          DeleteAllIcons();
+          iconList.append(CreateWittDetail(iconData));
+        }
+      }
     };
   }
   for (let i = 0; i < witt.length; i++) {
