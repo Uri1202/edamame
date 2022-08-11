@@ -1,5 +1,5 @@
 const baseUrl = "https://us-central1-aizuhack-353413.cloudfunctions.net";
-
+console.clear();
 //icon
 function CreateIcon(profileData) {
   const iconData = document.createElement("a");
@@ -41,13 +41,13 @@ function CreateWitt(profileData) {
   witt.className = "witt";
   witt.textContent = profileData.witticism;
 
-  const wittLike = document.createElement("div");
-  wittLike.className = "wittLike";
+  const wittClick = document.createElement("div");
+  wittClick.className = "wittClick";
+  wittClick.textContent = "Click!";
 
-  const wittHeart = document.createElement("div");
-  wittHeart.className = "wittHeart";
+  witt.append(wittClick);
 
-  wittData.append(human, witt, wittLike, wittHeart);
+  wittData.append(human, witt);
   return wittData;
 }
 
@@ -82,15 +82,20 @@ function CreateSB(mode) {
   searchInput.type = "text";
 
   if (mode === "teacher") {
-    searchInput.placeholder = "先生";
+    searchInput.placeholder = " 先生";
   } else if (mode === "witt") {
-    searchInput.placeholder = "名言";
+    searchInput.placeholder = " 名言";
   } else if (mode === "news") {
-    searchInput.placeholder = "タイトル";
+    searchInput.placeholder = " タイトル";
   }
 
   const sub_searchBtn = document.createElement("button");
   sub_searchBtn.className = "searchBtn";
+
+  const glass = document.createElement("span");
+  glass.className = "glass";
+
+  sub_searchBtn.append(glass);
 
   searchBox.append(searchInput, sub_searchBtn);
   return searchBox;
@@ -103,16 +108,16 @@ function CreateSB(mode) {
 function PostTeacher() {
   const profile_data = {
     name: {
-      hiragana: "かー　にこらす",
-      kanji: "",
-      english: "CARR Nicholas"
+      hiragana: "きはら　ひろし",
+      kanji: "木原　浩",
+      english: "KIHARA Hiroshi"
     },
-    imageUrl: "https://u-aizu.ac.jp/upload/user/90143.jpg",
-    rateAverage: 3.4,
-    ratedCount: 1,
-    subjects: ["英語"],
-    comments: ["おはよう"],
-    witticism: ["Boys be anxious"]
+    imageUrl: "https://u-aizu.ac.jp/upload/user/90009.jpg",
+    rateAverage: 0,
+    ratedCount: 0,
+    subjects: ["数学"],
+    comments: [""],
+    witticism: "誰の目から見ても直感的にあきらか"
   };
   fetch(baseUrl + "/Data?collection=teacher", {
     method: "POST",
@@ -182,8 +187,10 @@ const radioBtn7 = document.getElementsByName("menu")[2];
 const radioBtn = document.getElementsByClassName("sort")[0];
 const displayOriginal1 = radioBtn.style.display;
 
-const toggleBtn = document.getElementsByClassName("toggle_button")[0];
-const displayOriginal2 = toggleBtn.style.display;
+const toggleBtn = document.getElementsByClassName("toggle_input")[0];
+const toggleTag = document.getElementsByClassName("toggle_button")[0];
+const displayOriginal2 = toggleTag.style.display;
+console.log(displayOriginal2);
 
 const teacherTitle = document.createElement("div");
 teacherTitle.className = "title";
@@ -201,7 +208,15 @@ let btnNum = 0;
 const backgroundUrl = "https://gahag.net/007558-chalkboard-background/";
 const iconSortList = [];
 const newsList = [];
-const subjectList = ["数学", "英語", "物理", "プログラミング"];
+const subjectList = [
+  "数学",
+  "英語",
+  "物理",
+  "プログラミング",
+  "web",
+  "iot",
+  "line bot"
+];
 
 Get_Profile().then((profileData) => {
   /*
@@ -282,7 +297,9 @@ function Refresh(mode) {
   DeleteAllIcons();
 
   if (mode === "sort") {
-    radioBtn.style.display = displayOriginal1;
+    RefreshTitle("teacher");
+    RefreshBtn("teacher");
+    RefreshSB("teacher");
 
     if (radioBtn3.checked === true) {
       Sort_subject();
@@ -295,16 +312,17 @@ function Refresh(mode) {
     RefreshTitle("witt");
     RefreshBtn("witt");
     RefreshSB("witt");
-    radioBtn.style.display = "none";
 
     for (let i = 0; i < iconSortList.length; i = i + 1) {
-      iconList.append(CreateWitt(iconSortList[i]));
+      console.log(iconSortList[i].witticism);
+      if (iconSortList[i].witticism !== "") {
+        iconList.append(CreateWitt(iconSortList[i]));
+      }
     }
   } else if (mode === "news") {
     RefreshTitle("news");
     RefreshBtn("news");
     RefreshSB("news");
-    radioBtn.style.display = "none";
 
     DisplayNewsList();
   }
@@ -318,7 +336,6 @@ function Refresh_value(mode) {
       RefreshTitle("teacher");
       RefreshBtn("teacher");
       RefreshSB("teacher");
-      radioBtn.style.display = displayOriginal1;
 
       if (radioBtn3.checked === true) {
         Sort_subject();
@@ -331,16 +348,17 @@ function Refresh_value(mode) {
       RefreshTitle("witt");
       RefreshBtn("witt");
       RefreshSB("witt");
-      radioBtn.style.display = "none";
 
       for (let i = 0; i < iconSortList.length; i = i + 1) {
-        iconList.append(CreateWitt(iconSortList[i]));
+        console.log(iconSortList[i].witticism);
+        if (iconSortList[i].witticism !== "") {
+          iconList.append(CreateWitt(iconSortList[i]));
+        }
       }
     } else if (mode === "news") {
       RefreshTitle("news");
       RefreshBtn("news");
       RefreshSB("news");
-      radioBtn.style.display = "none";
 
       DisplayNewsList();
     }
@@ -363,13 +381,13 @@ function RefreshBG_value(mode) {
 function RefreshBtn(mode) {
   if (mode === "teacher") {
     radioBtn.style.display = displayOriginal1;
-    toggleBtn.style.display = displayOriginal2;
+    toggleTag.style.display = displayOriginal2;
   } else if (mode === "witt") {
     radioBtn.style.display = "none";
-    toggleBtn.style.display = "none";
+    toggleTag.style.display = "none";
   } else if (mode === "news") {
     radioBtn.style.display = "none";
-    toggleBtn.style.display = "none";
+    toggleTag.style.display = "none";
   }
 }
 //日本語並び替え
@@ -456,32 +474,81 @@ radioBtn4.addEventListener("click", Sort_rate, false);
 
 //検索
 
+//メイン検索
+
+function MainSearch() {
+  btnNum = 1;
+  const textContent = document.getElementsByClassName("textbox")[0];
+  const keyWord = textContent.value;
+
+  const pickIconList1 = Search_name(keyWord);
+  const pickIconList2 = Search_witt(keyWord);
+  const pickIconList3 = Search_news(keyWord);
+
+  if (pickIconList1 !== 0) {
+    DeleteAllIcons();
+    RefreshTitle("teacher");
+    RefreshBtn("teacher");
+    RefreshSB("teacher");
+    radioBtn.style.display = displayOriginal1;
+
+    for (let icon of pickIconList1) {
+      iconList.append(icon);
+    }
+  } else if (pickIconList2 !== 0) {
+    DeleteAllIcons();
+    RefreshTitle("witt");
+    RefreshBtn("witt");
+    RefreshSB("witt");
+    radioBtn.style.display = "none";
+
+    for (let icon of pickIconList2) {
+      iconList.append(icon);
+    }
+  } else if (pickIconList3 !== 0) {
+    DeleteAllIcons();
+    RefreshTitle("news");
+    RefreshBtn("news");
+    RefreshSB("news");
+    radioBtn.style.display = "none";
+
+    for (let icon of pickIconList3) {
+      iconList.append(icon);
+    }
+  }
+}
+//サブ検索
 function SubSearch() {
+  btnNum = 2;
   const SearchBtn = document.getElementsByClassName("searchBtn")[0];
   function search() {
-    DeleteAllIcons();
     const textContent = document.getElementsByClassName("searchInput")[0];
 
-    if (textContent.placeholder === "先生") {
+    if (textContent.placeholder === " 先生") {
       const pickIconList1 = Search_name(textContent.value);
       const pickIconList2 = Search_subject(textContent.value);
-
       if (pickIconList1 !== 0) {
+        DeleteAllIcons();
         for (let icon of pickIconList1) {
           iconList.append(icon);
         }
       } else if (pickIconList2 !== 0) {
+        DeleteAllIcons();
         iconList.append(pickIconList2);
       }
-    } else if (textContent.placeholder === "名言") {
+    } else if (textContent.placeholder === " 名言") {
       const pickIconList1 = Search_witt(textContent.value);
-
-      for (let icon of pickIconList1) {
-        iconList.append(icon);
+      if (pickIconList1 !== 0) {
+        DeleteAllIcons();
+        for (let icon of pickIconList1) {
+          iconList.append(icon);
+        }
       }
-    } else if (textContent.placeholder === "タイトル") {
+    } else if (textContent.placeholder === " タイトル") {
       const pickIconList1 = Search_news(textContent.value);
-
+      if (pickIconList1 !== 0) {
+        DeleteAllIcons();
+      }
       for (let news of pickIconList1) {
         iconList.append(news);
       }
@@ -569,25 +636,8 @@ function Search_news(textContent) {
   }
 }
 
-function Search() {
-  btnNum = 1;
-  DeleteAllIcons();
-
-  const textContent = document.getElementsByClassName("textbox")[0];
-  const pickIconList1 = Search_name(textContent.value);
-  const pickIconList2 = Search_subject(textContent.value);
-
-  if (pickIconList1 !== 0) {
-    for (let icon of pickIconList1) {
-      iconList.append(icon);
-    }
-  } else if (pickIconList2 !== 0) {
-    iconList.append(pickIconList2);
-  }
-}
-
 const mainSearchBtn = document.getElementsByClassName("search")[0];
-mainSearchBtn.addEventListener("click", Search, false);
+mainSearchBtn.addEventListener("click", MainSearch, false);
 
 //メニュー切り替え
 
@@ -604,7 +654,7 @@ function Switch() {
   if (btnNum === 0) {
     Refresh("sort");
   } else {
-    Search();
+    MainSearch();
   }
 }
 

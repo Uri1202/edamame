@@ -40,30 +40,14 @@ function AddProfile(profileData) {
   iconStar.className = "star5_rating";
   iconStar.dataset.rate = roundRate.toString();
 
-  const detail1 = document.createElement("details");
-  detail1.className = "iconName";
+  const subject = document.createElement("div");
+  subject.className = "subject";
+  subject.textContent = profileData.subjects;
 
-  const detail2 = document.createElement("details");
-  detail2.className = "iconName";
-
-  const subject = document.createElement("summary");
-  subject.className = "iconName";
-  subject.textContent = profileData.subject;
-
-  const lab = document.createElement("summary");
-  lab.className = "iconName";
-  lab.textContent = profileData.lab;
-
-  detail1.append(subject);
-  detail2.append(subject);
-
-  detail1.textContent = "科目";
-  detail2.textContent = "研究室";
-
+  information.append(subject);
   flame.append(img);
   Name.append(name);
   star5.append(iconStar);
-  information.append(detail1, detail2);
 }
 
 //コメント追加

@@ -497,7 +497,10 @@ h2 {
   margin: 0;
   padding: 0;
 }
-
+.wittClick {
+  text-align: center;
+  color: blue;
+}
 .icon {
   display: flex;
   flex-flow: column;
@@ -599,8 +602,8 @@ h2 {
 }
 
 .wittSingle {
-  text-align: center;
   font-family: "Sawarabi Mincho";
+  text-align: center;
   font-size: 50px;
 }
 
@@ -644,12 +647,70 @@ h2 {
   right: 0;
 }
 .wittName {
-  margin-left: 450px;
-  margin-top: 100px;
+  font-family: "Sawarabi Mincho";
+  animation: fadein 10s;
+  display: flex;
+  align-items: center; /* 垂直中心 */
+  justify-content: center; /* 水平中心 */
 }
+.wittName:before {
+  content: "";
+  display: inline-block;
+  border-top: 2px solid;
+  width: 3em;
+  margin-right: 1em;
+}
+.wittName:after {
+  content: "";
+  display: inline-block;
+  border-top: 2px solid;
+  width: 3em;
+  margin-left: 1em;
+}
+
 .wittImg {
-  display: none;
+  background-color: #ffb36b;
+  position: absolute;
+  top: 13px;
+  right: 10px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 13px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 37px;
+  transform-origin: 50% 50%;
+  animation: fadein 20s;
+  display: inline-block;
+  margin-right: 340px;
+  margin-top: -30px;
 }
+
+@keyframes animScale {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  25% {
+    opacity: 1;
+    transform: scale(0.8);
+  }
+  40% {
+    transform: scale(1.1);
+  }
+  60% {
+    transform: scale(0.9);
+  }
+  80% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 @keyframes slide {
   0% {
     transform: translateX(5px);
@@ -673,42 +734,40 @@ h2 {
 
 .searchBox {
   position: absolute;
-  top: 16%;
+  top: 19.4%;
   left: 80%;
   transform: translate(-50%, 50%);
   background: white;
-  height: 40px;
-  border-radius: 40px;
-  padding: 10px;
+  height: 36px;
+  padding: 0px;
   transition: 3s;
+  width: 60px;
 }
 
 .searchBox:hover > .searchInput {
   width: 240px;
-  padding: 0 6px;
-  transition: 3s;
 }
 
-.searchBox:hover > .searchBtn {
-  background: white;
-  color: #2f3640;
-  animation: slide 3s;
-}
 .searchBox:hover {
-  width: 300px;
-  border-bottom: 2px;
+  width: 350px;
+  border-bottom: 2px solid black;
+  transition: 3s;
 }
 .searchBtn {
-  color: black;
+  padding: 0px;
+  top: 0px;
+  right: 0px;
   float: right;
-  width: 40px;
-  height: 40px;
+  color: black;
+  width: 30px;
+  height: 30px;
+  border: 4px solid black;
   border-radius: 50%;
   background: white;
-  display: flex;
   justify-content: center;
   align-items: center;
   transition: 3s;
+  color: black;
 }
 
 .searchInput {
@@ -722,4 +781,23 @@ h2 {
   transition: 3s;
   line-height: 40px;
   width: 0px;
+}
+.glass {
+  display: inline-block;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  color: #000;
+  font-size: 200px;
+}
+.glass::after {
+  position: absolute;
+  top: 15px;
+  left: 63%;
+  transform: rotate(-45deg);
+  width: 5px;
+  height: 25px;
+  box-sizing: border-box;
+  background-color: currentColor;
+  content: "";
 }

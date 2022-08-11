@@ -14,34 +14,54 @@
   </head>
 
   <body>
-    aasdfasdf
-    <div class id="left">
-      <div class="flame01"></div>
-      <div class="blank"></div>
-      <div class="name"></div>
-      <div class="star5"></div>
-      <div class="information"></div>
-      <div class="evaluation">
-        <input type="radio" name="evaluation" id="1" />
-        <label class="radio" for="1"><p>1</p></label>
-        <input type="radio" name="evaluation" id="2" />
-        <label class="radio" for="2"><p>2</p></label>
-        <input type="radio" name="evaluation" id="3" />
-        <label class="radio" for="3"><p>3</p></label>
-        <input type="radio" name="evaluation" id="4" />
-        <label class="radio" for="4"><p>4</p></label>
-        <input type="radio" name="evaluation" id="5" />
-        <label class="radio" for="5"><p>5</p></label>
-        <button class="submitStar">送信</button>
+    <div class="header">
+      <img
+        class="logo"
+        src="https://cdn.discordapp.com/attachments/992426402194391121/1003583003995418684/logo.png"
+        alt="rogo"
+      />
+      <div class="mainTitle">
+        <span class="titleChar1">食</span>
+        <span class="titleChar2">べ</span>
+        <span class="titleChar3">ロ</span>
+        <span class="titleChar4">グ</span>
+        <span class="titleChar5">先</span>
+        <span class="titleChar6">生</span>
+      </div>
+      <input type="text" class="textbox" placeholder="名前、教科で検索" />
+      <button class="search">検索</button>
+    </div>
+    <div class="All">
+      <div class id="left">
+        <div class="flame01"></div>
+        <div class="name"></div>
+        <div class="star5"></div>
+        <div class="information"></div>
+        <div class="evaluation">
+          <input type="radio" name="evaluation" id="1" />
+          <label class="radio" for="1"><p>1</p></label>
+          <input type="radio" name="evaluation" id="2" />
+          <label class="radio" for="2"><p>2</p></label>
+          <input type="radio" name="evaluation" id="3" />
+          <label class="radio" for="3"><p>3</p></label>
+          <input type="radio" name="evaluation" id="4" />
+          <label class="radio" for="4"><p>4</p></label>
+          <input type="radio" name="evaluation" id="5" />
+          <label class="radio" for="5"><p>5</p></label>
+          <button class="submitStar">送信▸</button>
+        </div>
+      </div>
+
+      <div class id="right">
+        <div class="top">
+          <input type="text" class="text" />
+          <button class="submit">投稿</button>
+        </div>
+
+        <div class="commentList"></div>
       </div>
     </div>
-
-    <div class id="right">
-      <input type="text" class="text" />
-      <button class="submit">投稿する</button>
-
-      <div class="commentList"></div>
-    </div>
+    <!-- close all -->
     <script src="profile2.js"></script>
   </body>
 </html>
