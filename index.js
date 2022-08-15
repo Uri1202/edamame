@@ -37,6 +37,9 @@ function CreateWitt(profileData) {
   human.src = "https://icooon-mono.com/i/icon_10226/icon_102261_64.png";
   human.className = "human";
 
+  const bubble = document.createElement("div");
+  bubble.className = "bubble";
+
   const witt = document.createElement("div");
   witt.className = "witt";
   witt.textContent = profileData.witticism;
@@ -45,9 +48,9 @@ function CreateWitt(profileData) {
   wittClick.className = "wittClick";
   wittClick.textContent = "Click!";
 
-  witt.append(wittClick);
+  bubble.append(witt, wittClick);
 
-  wittData.append(human, witt);
+  wittData.append(human, bubble);
   return wittData;
 }
 
@@ -469,6 +472,26 @@ radioBtn2.addEventListener("click", Sort_english, false);
 radioBtn3.addEventListener("click", Sort_subject, false);
 radioBtn4.addEventListener("click", Sort_rate, false);
 
+//名言表示
+
+function DisplayWitt() {
+  const bubble = document.getElementsByClassName("bubble");
+  const witt = document.getElementsByClassName("witt");
+  function AppendWitt(i) {
+    return () => {
+      for (let iconData of iconSortList) {
+        if (witt[i].textContent === iconData.witticism) {
+          DeleteAllIcons();
+          iconList.append(CreateWittDetail(iconData));
+        }
+      }
+    };
+  }
+  for (let i = 0; i < bubble.length; i++) {
+    bubble[i].addEventListener("click", AppendWitt(i), false);
+  }
+}
+radioBtn6.addEventListener("click", DisplayWitt, false);
 //検索
 
 //メイン検索
@@ -518,6 +541,7 @@ function MainSearch() {
 function SubSearch() {
   btnNum = 2;
   const SearchBtn = document.getElementsByClassName("searchBtn")[0];
+
   function search() {
     const textContent = document.getElementsByClassName("searchInput")[0];
 
@@ -551,6 +575,7 @@ function SubSearch() {
       }
     }
   }
+  SearchBtn.addEventListener("click", DisplayWitt, false);
   SearchBtn.addEventListener("click", search, false);
 }
 
@@ -677,32 +702,6 @@ function CreateWittDetail(profileData) {
   wittData.append(teacherImg, witt, teacherName);
   return wittData;
 }
-
-//名言表示
-
-function DisplayWitt() {
-  const witt = document.getElementsByClassName("witt");
-  function AppendWitt(i) {
-    return () => {
-      for (let iconData of iconSortList) {
-        let wittLen = witt[i].textContent.length;
-        console.log(witt[i].textContent.slice(0, wittLen - 7));
-        console.log(iconData.name.hiragana);
-        if (iconData.name.hiragana === "きはら　ひろし" && i === 0) {
-          DeleteAllIcons();
-          iconList.append(CreateWittDetail(iconData));
-        } else if (iconData.name.hiragana === "すず" && i === 1) {
-          DeleteAllIcons();
-          iconList.append(CreateWittDetail(iconData));
-        }
-      }
-    };
-  }
-  for (let i = 0; i < witt.length; i++) {
-    witt[i].addEventListener("click", AppendWitt(i), false);
-  }
-}
-radioBtn6.addEventListener("click", DisplayWitt, false);
 
 //ニュースリスト表示
 
