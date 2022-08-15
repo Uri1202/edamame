@@ -49,8 +49,36 @@ function CreateWitt(profileData) {
   wittClick.textContent = "Click!";
 
   bubble.append(witt, wittClick);
-
   wittData.append(human, bubble);
+
+  function DisplayWitt() {
+    DeleteAllIcons();
+    iconList.append(CreateWittDetail(profileData));
+  }
+
+  bubble.addEventListener("click", DisplayWitt, false);
+  return wittData;
+}
+
+//名言詳細
+
+function CreateWittDetail(profileData) {
+  const wittData = document.createElement("div");
+  wittData.className = "teacherWittSingle";
+
+  const teacherImg = document.createElement("img");
+  teacherImg.className = "wittImg";
+  teacherImg.src = profileData.imageUrl;
+
+  const teacherName = document.createElement("div");
+  teacherName.className = "wittName";
+  teacherName.textContent = profileData.name.hiragana;
+
+  const witt = document.createElement("div");
+  witt.className = "wittSingle";
+  witt.textContent = profileData.witticism;
+
+  wittData.append(teacherImg, witt, teacherName);
   return wittData;
 }
 
@@ -544,7 +572,6 @@ function SubSearch() {
 
   function search() {
     const textContent = document.getElementsByClassName("searchInput")[0];
-
     if (textContent.placeholder === " 先生") {
       const pickIconList1 = Search_name(textContent.value);
       const pickIconList2 = Search_subject(textContent.value);
@@ -557,7 +584,10 @@ function SubSearch() {
         DeleteAllIcons();
         iconList.append(pickIconList2);
       }
-    } else if (textContent.placeholder === " 名言") {
+    } else if (
+      textContent.placeholder === " 名言" &&
+      textContent.value !== ""
+    ) {
       const pickIconList1 = Search_witt(textContent.value);
       if (pickIconList1 !== 0) {
         DeleteAllIcons();
@@ -681,27 +711,6 @@ function Switch() {
 }
 
 toggleBtn.addEventListener("click", Switch, false);
-//名言詳細表示
-
-function CreateWittDetail(profileData) {
-  const wittData = document.createElement("div");
-  wittData.className = "teacherWittSingle";
-
-  const teacherImg = document.createElement("img");
-  teacherImg.className = "wittImg";
-  teacherImg.src = profileData.imageUrl;
-
-  const teacherName = document.createElement("div");
-  teacherName.className = "wittName";
-  teacherName.textContent = profileData.name.hiragana;
-
-  const witt = document.createElement("div");
-  witt.className = "wittSingle";
-  witt.textContent = profileData.witticism;
-
-  wittData.append(teacherImg, witt, teacherName);
-  return wittData;
-}
 
 //ニュースリスト表示
 
