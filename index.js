@@ -205,6 +205,7 @@ function Delete_Data(profileData) {
 const background = document.getElementsByClassName("background")[0];
 const iconList = document.getElementsByClassName("main-content1")[0];
 const Title = document.getElementsByClassName("Title")[0];
+const textContent = document.getElementsByClassName("textbox")[0];
 const SearchBox = document.getElementsByClassName("SearchBox")[0];
 
 const radioBtn1 = document.getElementsByName("sort")[0];
@@ -526,6 +527,7 @@ radioBtn6.addEventListener("click", DisplayWitt, false);
 
 function MainSearch() {
   btnNum = 1;
+
   const textContent = document.getElementsByClassName("textbox")[0];
   const keyWord = textContent.value;
 
@@ -565,6 +567,7 @@ function MainSearch() {
     }
   }
 }
+
 //サブ検索
 function SubSearch() {
   btnNum = 2;
@@ -690,6 +693,14 @@ function Search_news(textContent) {
 
 const mainSearchBtn = document.getElementsByClassName("search")[0];
 mainSearchBtn.addEventListener("click", MainSearch, false);
+
+function EnterSearch(e) {
+  if (e.keyCode === 13) {
+    MainSearch();
+  }
+}
+
+textContent.addEventListener("keypress", EnterSearch, false);
 
 //メニュー切り替え
 
